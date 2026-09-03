@@ -25,10 +25,11 @@
 
 ## 安装
 
-仓库发布后，可以克隆到 Agent 的 Skills 目录：
+先克隆总仓库，再复制这个 Skill 目录：
 
 ```bash
-git clone https://github.com/wangge-ai/ecom-main-image-diagnosis.git ~/.agents/skills/ecom-main-image-diagnosis
+git clone https://github.com/wangge-ai/wangge-skills.git
+cp -R wangge-skills/skills/ecom-main-image-diagnosis ~/.agents/skills/ecom-main-image-diagnosis
 ```
 
 也可以复制到项目级的 `.agents/skills/` 或对应 Agent 的 Skills 目录。
@@ -53,4 +54,3 @@ git clone https://github.com/wangge-ai/ecom-main-image-diagnosis.git ~/.agents/s
 ## 开源协议
 
 [MIT](LICENSE)
-

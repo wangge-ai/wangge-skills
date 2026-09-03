@@ -14,10 +14,11 @@
 
 ## 安装
 
-仓库发布后可以直接克隆到 Agent 的 Skills 目录：
+先克隆总仓库，再复制这个 Skill 目录：
 
 ```bash
-git clone https://github.com/wangge-ai/github-repo-dissector.git ~/.agents/skills/github-repo-dissector
+git clone https://github.com/wangge-ai/wangge-skills.git
+cp -R wangge-skills/skills/github-repo-dissector ~/.agents/skills/github-repo-dissector
 ```
 
 也可以把整个仓库复制到当前项目的 `.agents/skills/` 或对应 Agent 的 Skills 目录。
@@ -50,4 +51,3 @@ git clone https://github.com/wangge-ai/github-repo-dissector.git ~/.agents/skill
 ---
 
 [旺哥开源 Skills](https://github.com/wangge-ai/wangge-skills) · [旺哥 AI 电商实战群](https://t2vq6a99kv.feishuapp.com/app/app_17a7exe7wzv/)
-

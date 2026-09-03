@@ -39,10 +39,11 @@ python scripts/render_report_html.py \
 
 ## 安装
 
-仓库发布后，可以克隆到 Agent 的 Skills 目录：
+先克隆总仓库，再复制这个 Skill 目录：
 
 ```bash
-git clone https://github.com/wangge-ai/ecommerce-competitor-analyzer.git ~/.agents/skills/ecommerce-competitor-analyzer
+git clone https://github.com/wangge-ai/wangge-skills.git
+cp -R wangge-skills/skills/ecommerce-competitor-analyzer ~/.agents/skills/ecommerce-competitor-analyzer
 ```
 
 也可以复制到项目级的 `.agents/skills/` 或对应 Agent 的 Skills 目录。
@@ -68,4 +69,3 @@ python -m unittest discover -s tests -v
 ## 开源协议
 
 [MIT](LICENSE)
-

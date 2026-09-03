@@ -42,10 +42,11 @@ CSV 路径使用 Python 标准库；读取 XLSX 时需要 `openpyxl`。
 
 ## 安装
 
-仓库发布后，可以克隆到 Agent 的 Skills 目录：
+先克隆总仓库，再复制这个 Skill 目录：
 
 ```bash
-git clone https://github.com/wangge-ai/ecom-market-insight-table.git ~/.agents/skills/ecom-market-insight-table
+git clone https://github.com/wangge-ai/wangge-skills.git
+cp -R wangge-skills/skills/ecom-market-insight-table ~/.agents/skills/ecom-market-insight-table
 ```
 
 也可以复制到项目级的 `.agents/skills/` 或对应 Agent 的 Skills 目录。
@@ -67,4 +68,3 @@ python -m unittest discover -s tests -v
 ## 开源协议
 
 [MIT](LICENSE)
-
