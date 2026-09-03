@@ -1,9 +1,51 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
+  "updated": "2026-09-03",
   "owner": "wangge-ai",
   "catalog": "wangge-skills",
   "homepage": "https://github.com/wangge-ai/wangge-skills",
   "community": "https://t2vq6a99kv.feishuapp.com/app/app_17a7exe7wzv/",
-  "skills": []
+  "feishu_library": "https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH",
+  "skills": [
+    {
+      "name": "github-repo-dissector",
+      "category": "GitHub 与开源",
+      "repo": "wangge-skills",
+      "subdir": "skills/github-repo-dissector",
+      "summary": "拆解 GitHub 仓库的定位、架构、维护状态、使用成本与落地方式。",
+      "keywords": ["GitHub", "仓库分析", "开源项目", "安装试跑"]
+    },
+    {
+      "name": "ecom-main-image-diagnosis",
+      "category": "电商视觉",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-main-image-diagnosis",
+      "summary": "诊断电商主图、搜索结果卡和广告素材中的视觉与点击问题。",
+      "keywords": ["电商主图", "视觉诊断", "点击率", "A/B测试"]
+    },
+    {
+      "name": "rpa-flow-architect",
+      "category": "自动化",
+      "repo": "wangge-skills",
+      "subdir": "skills/rpa-flow-architect",
+      "summary": "设计、诊断、改造和验收影刀等 GUI RPA 流程。",
+      "keywords": ["RPA", "影刀", "自动化", "流程审计"]
+    },
+    {
+      "name": "ecom-market-insight-table",
+      "category": "电商数据分析",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-market-insight-table",
+      "summary": "把商品列表表格转成价格带、竞争结构、词根和市场机会洞察。",
+      "keywords": ["Excel", "市场洞察", "价格带", "选品"]
+    },
+    {
+      "name": "ecommerce-competitor-analyzer",
+      "category": "电商数据分析",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecommerce-competitor-analyzer",
+      "summary": "基于商品链接、表格、截图和评论证据完成竞品分析。",
+      "keywords": ["竞品分析", "商品数据", "评论VOC", "市场研究"]
+    }
+  ]
 }
-

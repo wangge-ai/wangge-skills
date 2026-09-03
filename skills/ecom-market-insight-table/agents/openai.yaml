@@ -1,0 +1,4 @@
+interface:
+  display_name: "电商市场表格洞察"
+  short_description: "从商品列表表格分析价格带、词根、竞争结构与入场机会，保留样本边界"
+  default_prompt: "使用 $ecom-market-insight-table 分析这份商品列表，输出样本边界、市场洞察和首轮测试动作。"

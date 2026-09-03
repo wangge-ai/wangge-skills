@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verdict",
+    "key_findings",
+    "opportunities",
+    "positioning_candidates",
+    "experiment_plan",
+    "risks",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "verdict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "summary", "rationale", "evidence_ids"],
+      "properties": {
+        "status": { "type": "string", "enum": ["enter", "conditional", "hold"] },
+        "summary": { "type": "string", "minLength": 1 },
+        "rationale": { "type": "string", "minLength": 1 },
+        "evidence_ids": { "$ref": "#/$defs/evidenceIds" }
+      }
+    },
+    "key_findings": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "finding", "implication", "evidence_ids"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "finding": { "type": "string", "minLength": 1 },
+          "implication": { "type": "string", "minLength": 1 },
+          "evidence_ids": { "$ref": "#/$defs/evidenceIds" }
+        }
+      }
+    },
+    "opportunities": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "target_segment", "price_position", "differentiation", "risk", "evidence_ids"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "target_segment": { "type": "string", "minLength": 1 },
+          "price_position": { "type": "string", "minLength": 1 },
+          "differentiation": { "type": "string", "minLength": 1 },
+          "risk": { "type": "string", "minLength": 1 },
+          "evidence_ids": { "$ref": "#/$defs/evidenceIds" }
+        }
+      }
+    },
+    "positioning_candidates": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "audience", "promise", "proof", "evidence_ids"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "audience": { "type": "string", "minLength": 1 },
+          "promise": { "type": "string", "minLength": 1 },
+          "proof": { "type": "string", "minLength": 1 },
+          "evidence_ids": { "$ref": "#/$defs/evidenceIds" }
+        }
+      }
+    },
+    "experiment_plan": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["day_range", "objective", "action", "metric", "stop_rule", "evidence_ids"],
+        "properties": {
+          "day_range": { "type": "string", "minLength": 1 },
+          "objective": { "type": "string", "minLength": 1 },
+          "action": { "type": "string", "minLength": 1 },
+          "metric": { "type": "string", "minLength": 1 },
+          "stop_rule": { "type": "string", "minLength": 1 },
+          "evidence_ids": { "$ref": "#/$defs/evidenceIds" }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["risk", "mitigation", "evidence_ids"],
+        "properties": {
+          "risk": { "type": "string", "minLength": 1 },
+          "mitigation": { "type": "string", "minLength": 1 },
+          "evidence_ids": { "$ref": "#/$defs/evidenceIds" }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["statement", "evidence_ids"],
+        "properties": {
+          "statement": { "type": "string", "minLength": 1 },
+          "evidence_ids": { "$ref": "#/$defs/evidenceIds" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evidenceIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^FACT_[A-Z0-9_]+$" }
+    }
+  }
+}

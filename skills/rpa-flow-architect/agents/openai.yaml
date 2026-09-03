@@ -1,0 +1,4 @@
+interface:
+  display_name: "RPA 流程诊断与方案设计"
+  short_description: "从需求、流程截图和运行证据重建、诊断、优化并验收 GUI RPA 流程"
+  default_prompt: "Use $rpa-flow-architect 根据我提供的需求、流程截图、运行日志、状态文件或流程导出，重建当前 RPA，诊断风险，并给出可实施的逐节点方案与验收标准。"

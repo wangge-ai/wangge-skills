@@ -1,0 +1,4 @@
+interface:
+  display_name: "电商主图诊断"
+  short_description: "诊断国内电商主图点击问题并输出改图实验"
+  default_prompt: "Use $ecom-main-image-diagnosis to diagnose this ecommerce main image and produce a practical change plan."
