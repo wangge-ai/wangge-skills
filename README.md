@@ -51,6 +51,7 @@ Copy-Item -Recurse wangge-skills/skills/<skill-name> "$HOME/.agents/skills/<skil
 - 安全问题与披露方式见 [SECURITY.md](SECURITY.md)。
 - 提交 Skill、脚本或参考资料前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
 - 正式公开或发布版本前按 [轻量发布检查表](docs/release-checklist.md) 复核。
+- 最近一次公开发布检查见 [2026-09-03 审计记录](docs/audits/2026-09-03-public-release-audit.md)。
 
 ## 关注旺哥
 
