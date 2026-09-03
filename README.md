@@ -11,12 +11,13 @@
 - 成熟、完整、需要独立迭代的旗舰 Skill，使用单独的 GitHub 仓库。
 - 轻量 Skill 与配套工作流收录在本仓库，并通过 [`skills.json`](skills.json) 提供机器可读索引。
 
-## 首批整理方向
+## 首批开源项目
 
-- GitHub 仓库拆解与高潜项目发现
-- 电商主图诊断、市场洞察与竞品分析
-- RPA 流程架构与验收
-- 前端设计与可视化交付
+- [github-repo-dissector](https://github.com/wangge-ai/github-repo-dissector)：拆解 GitHub 仓库的定位、架构、维护状态、使用成本与落地方式。
+- [ecom-main-image-diagnosis](https://github.com/wangge-ai/ecom-main-image-diagnosis)：诊断电商主图、搜索结果卡和广告素材中的视觉问题。
+- [rpa-flow-architect](https://github.com/wangge-ai/rpa-flow-architect)：从业务目标、界面证据和运行日志出发设计、审计与验收 RPA 流程。
+- [ecom-market-insight-table](https://github.com/wangge-ai/ecom-market-insight-table)：把商品列表表格转成可追溯的市场洞察与测试建议。
+- [ecommerce-competitor-analyzer](https://github.com/wangge-ai/ecommerce-competitor-analyzer)：基于商品链接、表格和截图完成竞品分析与证据化报告。
 
 当前飞书分享库中的内容正在逐项做源码去重、许可证确认、隐私检查和跨 Agent 适配。压缩包、安装程序、平台截图和来源不明的第三方内容不会直接进入公开仓库。
 
@@ -32,4 +33,3 @@
 ## 开源协议
 
 本仓库自身的原创内容采用 [MIT License](LICENSE)。独立 Skill 仓库及第三方衍生内容以各自仓库中的许可证为准。
-
