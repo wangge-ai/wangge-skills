@@ -16,14 +16,14 @@
 
 ```bash
 python scripts/analyze_ecommerce_dataset.py \
-  --input products.csv \
+  --input examples/sample-competitors.csv \
   --out dataset-report.md \
   --category "收纳盒"
 ```
 
 ```bash
 python scripts/analyze_competitors.py \
-  --input competitors.csv \
+  --input examples/sample-competitors.csv \
   --out competitor-report.md \
   --json-out competitor-facts.json \
   --category "收纳盒"
@@ -35,7 +35,7 @@ python scripts/render_report_html.py \
   --out competitor-report.html
 ```
 
-`probe_product_links.py` 只检查公开可达链接。它不会自动登录，不索要账号、密码、Cookie 或 Token，也不会绕过验证码、风控或付费接口。
+`probe_product_links.py` 只检查公开可达的 HTTP/HTTPS 链接，并把响应 HTML、CSV 摘要和 JSON 摘要写入你指定的输出目录。它会拒绝本机、内网、保留地址和带内嵌账号密码的 URL；不会使用浏览器登录态，不索要账号、密码、Cookie 或 Token，也不会绕过验证码、风控或付费接口。
 
 ## 安装
 
@@ -65,6 +65,8 @@ python -m unittest discover -s tests -v
 ```
 
 当前测试覆盖事实来源、未知字段、广告与自然样本分母，以及登录和平台覆盖边界。
+
+`examples/sample-competitors.csv` 是虚构数据，可用于验证本地分析和渲染流程，不代表真实平台商品或市场结论。
 
 ## 开源协议
 

@@ -20,6 +20,8 @@ description: Use when 用户提供电商商品列表 Excel、CSV 或表格导出
 
 优先提供商品链接、标题、价格、销量或评价量、店铺、平台、采集时间和排序规则。字段不足时，先按 `references/input-and-evidence.md` 标记“可分析、有限分析、无法分析”，不要补造缺失数据。
 
+准备或脱敏输入表时读取 `references/data-preparation.md`；根据现有字段选择安全报告深度时读取 `references/report-router.md`。
+
 ## 确定性工具
 
 先运行 10 秒事实层脚本：
@@ -90,6 +92,8 @@ HTML 由确定性脚本完整生成。不要手工修改生成后的 HTML；需�
 3. 按 `references/analysis-playbook.md` 分析价格、店铺、词根和卖点结构。
 4. 将结论分为“表内事实、基于样本的推断、仍需验证”。
 5. 按 `references/output-contract.md` 输出机会、风险、证据和下一步测试。
+
+只有需要把结果公开成文章、README 或分享包时，才读取 `references/share-guidance.md`。
 
 ## 不能做什么
 

@@ -83,8 +83,12 @@ def parse_repo(value: str) -> tuple[str, str]:
     value = value.strip().rstrip("/")
     if value.startswith("http"):
         parsed = urllib.parse.urlparse(value)
+        if parsed.scheme not in {"http", "https"} or parsed.hostname not in {"github.com", "www.github.com"}:
+            raise SystemExit(f"Repository URL must use github.com: {value}")
+        if parsed.username or parsed.password:
+            raise SystemExit("Repository URL must not include embedded credentials")
         parts = [p for p in parsed.path.split("/") if p]
-        if len(parts) < 2:
+        if len(parts) != 2:
             raise SystemExit(f"Cannot parse repository from URL: {value}")
         return parts[0], parts[1].removesuffix(".git")
     if re.match(r"^[^/\s]+/[^/\s]+$", value):

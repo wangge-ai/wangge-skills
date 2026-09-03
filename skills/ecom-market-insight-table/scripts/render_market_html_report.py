@@ -354,30 +354,31 @@ def deep_analysis_sections(facts_view: dict[str, Any]) -> tuple[str, str]:
     )
 
     target = deep.get("target_band") or {}
+    own_brand_label = text(deep.get("own_brand_label"), "自有品牌")
     band_rows = [[
         item.get("band"), item.get("rows"), pct(item.get("share")), num(item.get("median_price")),
-        num(item.get("median_sales_signal")), pct(item.get("ad_share")), item.get("wolongsen_rows"),
+        num(item.get("median_sales_signal")), pct(item.get("ad_share")), item.get("own_brand_rows"),
     ] for item in deep.get("business_price_bands", [])]
     ad_rows = [[
         item.get("channel"), item.get("rows"), pct(item.get("share")), num(item.get("median_price")),
         num(item.get("median_sales_signal")), num(item.get("median_rank")), item.get("target_band_rows"),
-        item.get("wolongsen_rows"),
+        item.get("own_brand_rows"),
     ] for item in deep.get("ad_comparison", [])]
     structure_body = (
         '<div class="audit-strip">'
         + metric("目标价格带商品", num(target.get("rows")), f"占固定样本 {pct(target.get('share'))}")
-        + metric("目标带中位价", f"¥{num(target.get('median_price'))}", "30 元与 50 元均纳入")
-        + metric("沃朗森占位", num(target.get("wolongsen_rows")), f"目标价格带占比 {pct(target.get('wolongsen_share'))}")
+        + metric("目标带中位价", f"¥{num(target.get('median_price'))}", text(target.get("note"), "按任务定义口径"))
+        + metric(f"{own_brand_label}占位", num(target.get("own_brand_rows")), f"目标价格带占比 {pct(target.get('own_brand_share'))}")
         + "</div>"
         + '<h3>经营价格带</h3>'
         + table(
-            ["页面展示价区间", "商品数", "占比", "中位价", "付款信号中位下限", "广告占比", "沃朗森商品数"],
+            ["页面展示价区间", "商品数", "占比", "中位价", "付款信号中位下限", "广告占比", f"{own_brand_label}商品数"],
             band_rows,
             "经营价格带",
         )
         + '<h3>广告与自然位对照</h3>'
         + table(
-            ["位置类型", "商品数", "占比", "中位价", "付款信号中位下限", "中位排名", "目标带商品", "沃朗森商品"],
+            ["位置类型", "商品数", "占比", "中位价", "付款信号中位下限", "中位排名", "目标带商品", f"{own_brand_label}商品"],
             ad_rows,
             "广告与自然位对照",
         )
@@ -405,7 +406,7 @@ def deep_analysis_sections(facts_view: dict[str, Any]) -> tuple[str, str]:
     sku_rows = [[
         item.get("rank"), item.get("product_id"), num(item.get("price")), num(item.get("sales_signal")),
         "是" if item.get("is_ad") else "否", item.get("claims"),
-    ] for item in deep.get("wolongsen_skus", [])]
+    ] for item in deep.get("own_skus", [])]
     brand_body = (
         '<h3>品牌货架地图</h3>'
         + table(
@@ -413,11 +414,11 @@ def deep_analysis_sections(facts_view: dict[str, Any]) -> tuple[str, str]:
             brand_rows,
             "品牌货架地图",
         )
-        + '<h3>沃朗森内部 SKU</h3>'
+        + f'<h3>{escape(own_brand_label)}自有 SKU</h3>'
         + table(
             ["搜索位次", "商品 ID", "展示价", "付款信号下限", "广告", "标题卖点分类"],
             sku_rows,
-            "沃朗森内部 SKU",
+            f"{own_brand_label}自有 SKU",
         )
         + '<p class="boundary-note">同价和卖点重叠代表潜在内部竞争，需要结合投放与成交归因验证，不能直接等同于实际流量蚕食。</p>'
     )

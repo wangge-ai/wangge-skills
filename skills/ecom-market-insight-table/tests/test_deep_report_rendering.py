@@ -34,19 +34,19 @@ class DeepReportRenderingTests(unittest.TestCase):
                 "claim_taxonomy": [],
                 "claim_cooccurrence": [],
                 "brand_map": [],
-                "wolongsen_skus": [],
+                "own_skus": [],
                 "competitor_matrix": [],
                 "image_diagnostics": [],
             },
         }
         report = {
             "task_card": {
-                "decision_goal": "决定沃朗森30–50元牙膏的SKU收敛与验证路径",
+                "decision_goal": "决定示例品牌30–50元牙膏的SKU收敛与验证路径",
                 "report_type": "决策型",
                 "business_object": "牙膏市场、竞品与内容视觉",
                 "reader": "负责人、运营、商品与视觉团队",
                 "time_scope": "2026-07-20登录态搜索样本",
-                "main_task": "决策型及沃朗森30–50元牙膏定位",
+                "main_task": "决策型及示例品牌30–50元牙膏定位",
                 "submodules": "洞察型供给结构；比较型前10竞品；评估型6张首屏图",
             },
             "evidence_audit": {
@@ -69,7 +69,7 @@ class DeepReportRenderingTests(unittest.TestCase):
             "generation": {"status": "绿色", "handling": "自动生成", "confirmation": "用户已确认执行"},
             "executive_summary": {
                 "conclusion": "目标价格带不是空白机会。",
-                "basis": "目标带13/80，沃朗森占7/13。",
+                "basis": "目标带13/80，示例品牌占7/13。",
                 "action": "先收敛SKU，再做单变量测试。",
                 "confidence": "中等",
                 "limitation": "评价正文为0。",
@@ -88,7 +88,7 @@ class DeepReportRenderingTests(unittest.TestCase):
                 "title": "内部竞争机制",
                 "status": "分析推断",
                 "analysis": "同价同词可能造成潜在内部竞争，仍需归因数据验证。",
-                "evidence_ids": ["FACT_WOLONGSEN_SHELF"],
+                "evidence_ids": ["FACT_OWN_BRAND_SHELF"],
             }],
             "conclusions": [{
                 "type": "确定结论",
@@ -129,7 +129,7 @@ class DeepReportRenderingTests(unittest.TestCase):
             self.assertIn(phrase, html)
             self.assertIn(phrase, markdown)
         self.assertIn("- 报告类型：决策型", markdown)
-        self.assertIn("- 主任务：决策型及沃朗森30–50元牙膏定位", markdown)
+        self.assertIn("- 主任务：决策型及示例品牌30–50元牙膏定位", markdown)
         self.assertIn("- 子模块：洞察型供给结构；比较型前10竞品；评估型6张首屏图", markdown)
         self.assertIn("- 状态：绿色", markdown)
         self.assertIn("- 处理方式：自动生成", markdown)
@@ -159,6 +159,7 @@ class DeepReportRenderingTests(unittest.TestCase):
                 }
             ],
             "deep_analysis": {
+                "own_brand_label": "示例品牌",
                 "executive_snapshot": {
                     "strongest_conclusion": "目标价格带被单一品牌密集占位",
                     "biggest_limitation": "评价正文未取得",
@@ -204,18 +205,18 @@ class DeepReportRenderingTests(unittest.TestCase):
                     {"pair": "美白去黄 × 清新口气", "rows": 20, "share": 0.25}
                 ],
                 "brand_map": [
-                    {"brand": "沃朗森", "rows": 14, "share": 0.175, "target_band_rows": 7, "median_price": 35}
+                    {"brand": "示例品牌", "rows": 14, "share": 0.175, "target_band_rows": 7, "median_price": 35}
                 ],
-                "wolongsen_skus": [
+                "own_skus": [
                     {"product_id": "1", "rank": 18, "price": 35, "sales_signal": 3000, "claims": "牙结石 / 美白"}
                 ],
                 "competitor_matrix": [
-                    {"product_id": "1", "brand": "沃朗森", "archetype": "问题解决型", "search_price": 35, "live_price": 35, "price_delta": 0, "services": 4, "sku_groups": 1}
+                    {"product_id": "1", "brand": "示例品牌", "archetype": "问题解决型", "search_price": 35, "live_price": 35, "price_delta": 0, "services": 4, "sku_groups": 1}
                 ],
                 "image_diagnostics": [
                     {
-                        "asset_href": "evidence-images/wolongsen.webp",
-                        "brand": "沃朗森",
+                        "asset_href": "evidence-images/example-brand.webp",
+                        "brand": "示例品牌",
                         "role": "功效主图",
                         "strength": "商品清晰",
                         "weakness": "信息过载",
@@ -239,7 +240,7 @@ class DeepReportRenderingTests(unittest.TestCase):
             "目标价格带被单一品牌密集占位",
             "FACT_* 是机器证据编号，不是图片",
             "搜索商品样本",
-            "evidence-images/wolongsen.webp",
+            "evidence-images/example-brand.webp",
         ):
             self.assertIn(phrase, html)
         self.assertNotIn("FACT_PRICE_LABELS", html)

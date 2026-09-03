@@ -6,8 +6,10 @@ from __future__ import annotations
 import argparse
 import csv
 import html
+import ipaddress
 import json
 import re
+import socket
 import time
 import urllib.error
 import urllib.parse
@@ -23,6 +25,44 @@ MOBILE_UA = (
     "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
     "AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
 )
+
+
+def validate_public_http_url(url: str) -> str:
+    """Reject local, private, credential-bearing, and non-HTTP targets."""
+    parsed = urllib.parse.urlsplit(url.strip())
+    if parsed.scheme not in {"http", "https"}:
+        raise ValueError("only http:// and https:// product URLs are allowed")
+    if not parsed.hostname:
+        raise ValueError("product URL must include a hostname")
+    if parsed.username or parsed.password:
+        raise ValueError("product URL must not include embedded credentials")
+
+    hostname = parsed.hostname.rstrip(".").lower()
+    if hostname == "localhost" or hostname.endswith(".localhost"):
+        raise ValueError("local or private network URLs are not allowed")
+
+    try:
+        addresses = {ipaddress.ip_address(hostname)}
+    except ValueError:
+        try:
+            addresses = {
+                ipaddress.ip_address(item[4][0])
+                for item in socket.getaddrinfo(hostname, parsed.port or 443, type=socket.SOCK_STREAM)
+            }
+        except socket.gaierror as exc:
+            raise ValueError(f"product URL hostname could not be resolved: {hostname}") from exc
+
+    if not addresses or any(not address.is_global for address in addresses):
+        raise ValueError("local, private, reserved, or non-routable network URLs are not allowed")
+    return urllib.parse.urlunsplit(parsed)
+
+
+class PublicOnlyRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Apply the same public-network checks to every redirect target."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, D102
+        safe_url = validate_public_http_url(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, safe_url)
 
 
 def item_id_from_url(url: str) -> str:
@@ -68,6 +108,7 @@ def build_routes(url: str) -> list[tuple[str, str, str]]:
 
 
 def fetch(url: str, user_agent: str, timeout: int) -> dict:
+    url = validate_public_http_url(url)
     request = urllib.request.Request(
         url,
         headers={
@@ -76,8 +117,9 @@ def fetch(url: str, user_agent: str, timeout: int) -> dict:
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         },
     )
+    opener = urllib.request.build_opener(PublicOnlyRedirectHandler())
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        with opener.open(request, timeout=timeout) as response:
             raw = response.read()
             content_type = response.headers.get("content-type", "")
             encoding = response.headers.get_content_charset() or "utf-8"
@@ -173,6 +215,7 @@ def classify(raw_html: str, visible_text: str, final_url: str, title: str) -> tu
 
 
 def probe_url(url: str, out_dir: Path, timeout: int) -> list[dict]:
+    url = validate_public_http_url(url)
     records = []
     platform = platform_from_url(url)
     item_id = item_id_from_url(url)
@@ -214,6 +257,11 @@ def main() -> None:
     parser.add_argument("--out", required=True, help="Output folder")
     parser.add_argument("--timeout", type=int, default=20, help="Request timeout in seconds")
     args = parser.parse_args()
+
+    try:
+        args.url = [validate_public_http_url(url) for url in args.url]
+    except ValueError as exc:
+        parser.error(str(exc))
 
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)

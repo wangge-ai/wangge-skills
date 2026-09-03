@@ -41,7 +41,7 @@ description: Use when the user shares a GitHub repository URL, owner/repo, or as
 | 深度拆解 | “详细介绍”“架构讲透”“学习这个项目” | Deep Analysis |
 | HTML 可视化报告 | “生成报告”“可视化报告”“HTML 展示”“像截图那样”“好看的报告” | HTML Visual Report |
 | 热点趋势 | “最近增长快的 AI 仓库”“GitHub 热点” | Trend Watch |
-| 公众号素材 | “给 AI应用实战派PRO”“公众号角度” | Writing Material |
+| 公众号素材 | “给中文 AI 实战类公众号”“公众号角度” | Writing Material |
 | 简历复盘 | “整理成简历能力证据卡” | Evidence Card |
 
 如果用户只给一个 GitHub 仓库，或说“测试一下/看一下这个仓库”，默认输出 **Quick HTML Snapshot**：先做低成本取证，再生成一版短 HTML 分享页。只有用户明确说“不要 HTML/只口头说说”时，才退回 Quick Scan。只有用户要求“深度/详细/学习/架构/公众号素材/试跑/完整报告”时，才升级到 Deep Analysis、Trial Run 或完整 HTML Visual Report。

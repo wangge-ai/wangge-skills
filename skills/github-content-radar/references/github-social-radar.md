@@ -1,6 +1,6 @@
 ---
 name: github-social-radar
-description: Use when the user asks to find, monitor, collect, deduplicate, or summarize GitHub repositories recently or currently popular on Chinese social platforms such as WeChat official accounts, Bilibili, and Douyin; triggers include "最近/本周比较火的 GitHub 仓库", "公众号/B站/抖音推荐的 GitHub", "每周好用 GitHub 分享", "GitHub 社媒情报", "每天看 GitHub 分享整理", "去重这些平台提到的仓库", "近一周火的 AI 开源项目", or requests to build a daily/weekly GitHub radar for AI应用实战派PRO.
+description: Use when the user asks to find, monitor, collect, deduplicate, or summarize GitHub repositories recently or currently popular on Chinese social platforms such as WeChat official accounts, Bilibili, and Douyin; triggers include "最近/本周比较火的 GitHub 仓库", "公众号/B站/抖音推荐的 GitHub", "每周好用 GitHub 分享", "GitHub 社媒情报", "每天看 GitHub 分享整理", "去重这些平台提到的仓库", "近一周火的 AI 开源项目", or requests to build a daily/weekly GitHub radar for a Chinese AI practice account.
 ---
 
 # GitHub Social Radar
@@ -25,17 +25,17 @@ Always show exact scan date and any confirmed publish dates. If a source only sa
 
 ## Creator Seed Library
 
-Read `references/creator-seeds.md` before searching. It records public creators/accounts that repeatedly share GitHub repositories.
+Read `social-creator-seeds.md` before searching. It records public creators/accounts that repeatedly share GitHub repositories.
 
-This seed library is living memory, not static documentation. Whenever a scan discovers a useful new public creator, account, weekly ranking source, trend source, or project-curation source, update `references/creator-seeds.md` in the same turn before the final answer.
+This seed library is living memory, not static documentation. Whenever a scan discovers a useful new public creator, account, weekly ranking source, trend source, or project-curation source, update `social-creator-seeds.md` in the same turn before the final answer.
 
 Also read these references when the user asks why creators recommend repos, how to mine eye-catching repos, or what we should try next:
 
-- `references/creator-patterns.md`: creator/source recommendation logic.
-- `references/repo-pain-taxonomy.md`: pain-first repo classification.
-- `references/repo-mining-playbook.md`: how to discover eye-catching repos.
-- `references/repo-trial-outcomes.md`: our own trial feedback and watchlist.
-- `references/repo-appearance-log.md`: cross-run appearance frequency, dedup history, and repeated-social-signal tracking.
+- `social-creator-patterns.md`: creator/source recommendation logic.
+- `social-repo-pain-taxonomy.md`: pain-first repo classification.
+- `social-repo-mining-playbook.md`: how to discover eye-catching repos.
+- `social-repo-trial-outcomes.md`: our own trial feedback and watchlist.
+- `social-repo-appearance-log.md`: cross-run appearance frequency, dedup history, and repeated-social-signal tracking.
 
 Use two lanes every time:
 
@@ -48,7 +48,7 @@ After a scan, update the seed library only when the creator/source is public and
 
 Use this protocol on every radar run:
 
-1. Before searching, read `references/creator-seeds.md`.
+1. Before searching, read `social-creator-seeds.md`.
 2. During search, record every new public creator/source that appears useful.
 3. Verify the visible publish date or last-updated date when possible. A title saying "近一周" is not enough if the page was published months ago.
 4. If the creator/source is clearly useful, add or update it under `Current Seeds` or `Trend / Utility Sources`.
@@ -63,12 +63,12 @@ If a user asks to "再搜几个作者", "更新来源", "以后也要新增进�
 
 ### 1. Build Search Plan
 
-Read `references/search-playbook.md` when you need query templates.
+Read `social-search-playbook.md` when you need query templates.
 
 Search broadly and search known creators. Do not rely on one keyword family.
 
 1. Run broad queries for recent/hot GitHub sharing patterns.
-2. Run creator-seed queries from `references/creator-seeds.md`.
+2. Run creator-seed queries from `social-creator-seeds.md`.
 3. Search the wider web for platform-indexed pages if native platform search is unavailable.
 4. Extract all GitHub URLs, repo names, and unresolved project names.
 5. Keep a source log before deduplication.
@@ -103,7 +103,7 @@ For every known or new creator/source, infer and record:
 - Their discovery method when visible: growth ranking, GitHub Trending, official announcement, demo screenshot, issue/discussion, repo collection, platform buzz, or own test.
 - Whether the source is useful for us: `high / medium / low`.
 
-If the pattern is stable or newly discovered, update `references/creator-patterns.md` before final response.
+If the pattern is stable or newly discovered, update `social-creator-patterns.md` before final response.
 
 ### 3. Normalize And Deduplicate Repos
 
@@ -120,7 +120,7 @@ Rules:
 
 ### 3.5 Cross-Run Dedup And Appearance Frequency
 
-Before final prioritization, read `references/repo-appearance-log.md` when it exists.
+Before final prioritization, read `social-repo-appearance-log.md` when it exists.
 
 Track repeated appearances as a weak but useful signal:
 
@@ -165,7 +165,7 @@ If GitHub API is rate-limited, use accessible repo page/README facts and state t
 
 ### 4.5 Pain-First Classification
 
-Before scoring, classify each repo using `references/repo-pain-taxonomy.md`.
+Before scoring, classify each repo using `social-repo-pain-taxonomy.md`.
 
 Every candidate must answer:
 
@@ -214,11 +214,11 @@ Priority labels:
 - `C`: weak evidence, unclear pain, stale, or high-risk.
 - `Risk`: only discuss/observe boundaries, do not provide misuse workflow.
 
-Use `references/repo-mining-playbook.md` when deciding why a repo is eye-catching.
+Use `social-repo-mining-playbook.md` when deciding why a repo is eye-catching.
 
 ### 5.5 Trial Feedback Loop
 
-When a repo from this radar is later quick-dissected, installed, smoke-tested, rejected, or adopted, update `references/repo-trial-outcomes.md`.
+When a repo from this radar is later quick-dissected, installed, smoke-tested, rejected, or adopted, update `social-repo-trial-outcomes.md`.
 
 Record:
 
@@ -233,7 +233,7 @@ Do not claim trial success in radar reports unless `repo-trial-outcomes.md` or t
 
 ### 6. Output Report
 
-Use `references/output-template.md` for the full template.
+Use `social-output-template.md` for the full template.
 
 Default sections:
 
@@ -285,4 +285,4 @@ HTML hero rules:
 - Use `github-repo-dissector` for a selected repo's quick HTML report, deep clone mode, trial run, or architecture analysis.
 - Use `github-wechat-curation` when turning the radar results into WeChat article angles, title options, screenshot positions, or publication material.
 - Use `html-color-system` for any generated HTML page.
-- When `github-repo-dissector` finishes a real trial or rejection of a radar candidate, update `references/repo-trial-outcomes.md`.
+- When `github-repo-dissector` finishes a real trial or rejection of a radar candidate, update `social-repo-trial-outcomes.md`.

@@ -24,7 +24,7 @@
 
 ```bash
 python scripts/profile_market_table.py \
-  --input products.csv \
+  --input examples/sample-products.csv \
   --out-dir output \
   --category "收纳盒" \
   --source-note "平台、采集时间、关键词和排序口径"
@@ -38,7 +38,11 @@ python scripts/render_market_html_report.py \
   --out output/market-insight-report.html
 ```
 
-CSV 路径使用 Python 标准库；读取 XLSX 时需要 `openpyxl`。
+CSV 路径使用 Python 标准库；读取 XLSX 时需要可选依赖 `openpyxl`：
+
+```bash
+python -m pip install -r requirements-xlsx.txt
+```
 
 ## 安装
 
@@ -64,6 +68,8 @@ python -m unittest discover -s tests -v
 ```
 
 当前测试覆盖事实报告渲染、编排报告结构和工作台事实一致性。正式分析仍需检查用户输入的真实字段与业务口径。
+
+`examples/sample-products.csv` 是虚构数据，可用于验证 CSV 主路径，不代表真实平台商品或市场结论。
 
 ## 开源协议
 

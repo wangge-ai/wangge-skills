@@ -1,11 +1,11 @@
 ---
 name: github-wechat-curation
-description: Use when the user wants to discover, screen, dissect, or turn GitHub repositories into WeChat Official Account article material for AI应用实战派PRO, including trending AI repos, fast-growing projects, repo URLs, owner/repo strings, GitHub weekly lists, project selection, title angles, screenshot planning, and publishable素材卡.
+description: Use when the user wants to discover, screen, dissect, or turn GitHub repositories into Chinese WeChat Official Account article material, including trending AI repos, fast-growing projects, repo URLs, owner/repo strings, GitHub weekly lists, project selection, title angles, screenshot planning, and publishable素材卡.
 ---
 
 # GitHub WeChat Curation
 
-把 GitHub 仓库从“开源项目”转成 AI应用实战派PRO 可用的公众号素材。目标不是复述 README，而是建立这条链路：
+把 GitHub 仓库从“开源项目”转成中文 AI 实战类公众号可用的素材。目标不是复述 README，而是建立这条链路：
 
 `趋势发现/高潜力挖掘 -> 项目筛选 -> 仓库拆解 -> 公众号素材卡 -> 文章角度/标题/截图位/边界`
 
@@ -177,9 +177,9 @@ python <skills-root>/github-repo-dissector/scripts/github_repo_stats.py https://
 
 需要更详细规则时读取：
 
-- `references/github_article_rules.md`：文章结构、选题评分、标题和截图规则。
-- `references/high_potential_mining.md`：高质量 / 高潜力 GitHub 仓库挖掘方法。
-- `references/material_card_template.md`：可复制素材卡模板。
+- `wechat-github_article_rules.md`：文章结构、选题评分、标题和截图规则。
+- `wechat-high_potential_mining.md`：高质量 / 高潜力 GitHub 仓库挖掘方法。
+- `wechat-material_card_template.md`：可复制素材卡模板。
 ## 2026-06-03 Weekly Repo Publishing Update
 
 Use this section when the user asks for GitHub weekly lists, AI repo roundups, AI+ecommerce repo lists, or says an article has been published and the flow should be updated.

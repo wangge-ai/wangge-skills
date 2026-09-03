@@ -16,4 +16,10 @@ Use the GitHub connector for repository facts and the web or Kimi WebBridge for 
 5. Output a shortlist, rejection reasons, trial queue, shareability angle, and WeChat material card when requested.
 6. Store working data under a task-local `github-radar/` directory or another workspace chosen by the user.
 
-Read only the relevant references for discovery, creator patterns, shareability, or WeChat packaging.
+## Reference Routing
+
+- For a Chinese social-platform scan, read `references/github-social-radar.md`, then use the `social-*` references it names for search, source memory, scoring, appearance history, trial outcomes, and output structure.
+- For repository shareability or a lightweight public-facing explanation, read `references/github-repo-shareability.md`.
+- For WeChat topic selection and material cards, read `references/github-wechat-curation.md` and the `wechat-*` references it names.
+
+Read only the branch needed for the current request.

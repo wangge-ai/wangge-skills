@@ -1,6 +1,9 @@
 .DS_Store
 Thumbs.db
+__pycache__/
+*.py[cod]
+.env
+.venv/
 *.rar
 *.7z
 *.exe
-

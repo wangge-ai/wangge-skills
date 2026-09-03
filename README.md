@@ -30,6 +30,28 @@
 
 每个正式发布的 Skill 都在 `skills.json` 中记录目录、分类和用途。克隆本仓库后，把需要的 `skills/<skill-name>/` 目录复制到 Agent 的 Skills 目录即可；也可以直接阅读各目录中的说明。
 
+macOS / Linux：
+
+```bash
+git clone https://github.com/wangge-ai/wangge-skills.git
+cp -R wangge-skills/skills/<skill-name> ~/.agents/skills/<skill-name>
+```
+
+Windows PowerShell：
+
+```powershell
+git clone https://github.com/wangge-ai/wangge-skills.git
+Copy-Item -Recurse wangge-skills/skills/<skill-name> "$HOME/.agents/skills/<skill-name>"
+```
+
+脚本需要 Python 3.10 或更高版本，除 XLSX 读取外均只使用 Python 标准库。`ecom-market-insight-table` 读取 XLSX 时按其 README 安装可选依赖 `openpyxl`；CSV 路径无需第三方包。
+
+## 安全与贡献
+
+- 安全问题与披露方式见 [SECURITY.md](SECURITY.md)。
+- 提交 Skill、脚本或参考资料前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。
+- 正式公开或发布版本前按 [轻量发布检查表](docs/release-checklist.md) 复核。
+
 ## 关注旺哥
 
 - [旺哥 AI 电商实战群](https://t2vq6a99kv.feishuapp.com/app/app_17a7exe7wzv/)
@@ -38,4 +60,4 @@
 
 ## 开源协议
 
-本仓库自身的原创内容采用 [MIT License](LICENSE)。独立 Skill 仓库及第三方衍生内容以各自仓库中的许可证为准。
+本仓库及 `skills/` 下未另行声明的原创内容采用 [MIT License](LICENSE)。独立仓库或明确标注的第三方衍生内容以其各自许可证为准。
