@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Design System"
+  short_description: "Apply theme-first UI rules to frontend design work."
+  default_prompt: "Use $frontend-design-system to improve this page while preserving its product context and existing visual language."

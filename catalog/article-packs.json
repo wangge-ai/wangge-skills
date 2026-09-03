@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-09-03",
+  "source": "https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH",
+  "counts": {
+    "published": 5,
+    "partially_published": 2,
+    "needs_refactor": 10,
+    "feishu_only": 2,
+    "restricted": 4,
+    "deferred": 1,
+    "total": 24
+  },
+  "packages": [
+    {"id": 1, "name": "GitHub 仓库快速拆解", "type": "skill", "status": "published", "published_skill": "github-repo-dissector"},
+    {"id": 2, "name": "GitHub 高潜力发现", "type": "skill", "status": "published", "published_skill": "github-content-radar"},
+    {"id": 3, "name": "电商图片反推提示词", "type": "skill", "status": "needs_refactor"},
+    {"id": 4, "name": "电商主图诊断", "type": "skill", "status": "published", "published_skill": "ecom-main-image-diagnosis"},
+    {"id": 5, "name": "电商数据分析", "type": "skill", "status": "partially_published", "published_skill": "ecommerce-competitor-analyzer"},
+    {"id": 6, "name": "n8n 内容流水线", "type": "workflow", "status": "feishu_only"},
+    {"id": 7, "name": "电商作图 SOP 素材", "type": "assets", "status": "restricted"},
+    {"id": 8, "name": "爆款主图采集分析", "type": "workflow", "status": "needs_refactor"},
+    {"id": 9, "name": "竞品蒸馏打法地图", "type": "workflow", "status": "needs_refactor"},
+    {"id": 10, "name": "竞品拆解脚本工具包", "type": "toolkit", "status": "needs_refactor"},
+    {"id": 11, "name": "飞书数据中台起步包", "type": "toolkit_template", "status": "needs_refactor"},
+    {"id": 12, "name": "公众号文章转知识库", "type": "workflow", "status": "needs_refactor"},
+    {"id": 13, "name": "工具教程生成", "type": "skill", "status": "needs_refactor"},
+    {"id": 14, "name": "小红书 Skills", "type": "skill_collection", "status": "partially_published", "published_skill": "ecom-market-insight-table"},
+    {"id": 15, "name": "全域蒸馏器", "type": "skill", "status": "needs_refactor"},
+    {"id": 16, "name": "微信群消息分析", "type": "tutorial_skill", "status": "restricted"},
+    {"id": 17, "name": "AI 电商数据分析工作流", "type": "workflow", "status": "deferred"},
+    {"id": 18, "name": "提高 Codex 审美", "type": "skill", "status": "published", "published_skill": "frontend-design-system"},
+    {"id": 19, "name": "AI 评价分析", "type": "skill", "status": "needs_refactor"},
+    {"id": 20, "name": "WorkBuddy 数据分析", "type": "courseware", "status": "feishu_only"},
+    {"id": 21, "name": "达人精灵 TikTok 工作流", "type": "tutorial_materials", "status": "restricted"},
+    {"id": 22, "name": "WorkBuddy + 影刀 RPA", "type": "skill", "status": "published", "published_skill": "rpa-flow-architect"},
+    {"id": 23, "name": "卖家精灵 + 亚马逊运营", "type": "tutorial_materials", "status": "restricted"},
+    {"id": 24, "name": "豆包 + 飞书 SOP", "type": "tutorial_skill", "status": "needs_refactor"}
+  ]
+}

@@ -16,12 +16,28 @@
       "keywords": ["GitHub", "仓库分析", "开源项目", "安装试跑"]
     },
     {
+      "name": "github-content-radar",
+      "category": "GitHub 与内容选题",
+      "repo": "wangge-skills",
+      "subdir": "skills/github-content-radar",
+      "summary": "发现、去重和筛选值得实测、分享或写成公众号文章的 GitHub 项目。",
+      "keywords": ["GitHub", "项目发现", "内容选题", "公众号素材"]
+    },
+    {
       "name": "ecom-main-image-diagnosis",
       "category": "电商视觉",
       "repo": "wangge-skills",
       "subdir": "skills/ecom-main-image-diagnosis",
       "summary": "诊断电商主图、搜索结果卡和广告素材中的视觉与点击问题。",
       "keywords": ["电商主图", "视觉诊断", "点击率", "A/B测试"]
+    },
+    {
+      "name": "frontend-design-system",
+      "category": "设计与视觉",
+      "repo": "wangge-skills",
+      "subdir": "skills/frontend-design-system",
+      "summary": "为网页、报告、工作台和多页面产品提供主题优先的设计与视觉验收方法。",
+      "keywords": ["网页设计", "设计系统", "HTML", "视觉验收"]
     },
     {
       "name": "rpa-flow-architect",

@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub 内容雷达"
+  short_description: "发现、筛选和包装值得试用与分享的 GitHub 项目"
+  default_prompt: "使用 $github-content-radar 找出近期值得实际试用和写成公众号内容的 GitHub 项目。"
