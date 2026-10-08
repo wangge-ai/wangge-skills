@@ -1,0 +1,4 @@
+interface:
+  display_name: "工具新手完整教程"
+  short_description: "从产品名与官方资料生成可操作的新手教程，配搜索查询脚本和独立 HTML 渲染脚本。"
+  default_prompt: "请用 $beginner-tutorial-writer 根据我提供的资料完成工具新手完整教程，保留来源并说明缺失信息。"

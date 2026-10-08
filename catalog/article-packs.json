@@ -1,40 +1,284 @@
 {
-  "schema_version": "1.0",
-  "updated": "2026-09-03",
-  "source": "https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH",
-  "counts": {
-    "published": 5,
-    "partially_published": 2,
-    "needs_refactor": 10,
-    "feishu_only": 2,
-    "restricted": 4,
-    "deferred": 1,
-    "total": 24
-  },
-  "packages": [
-    {"id": 1, "name": "GitHub 仓库快速拆解", "type": "skill", "status": "published", "published_skill": "github-repo-dissector"},
-    {"id": 2, "name": "GitHub 高潜力发现", "type": "skill", "status": "published", "published_skill": "github-content-radar"},
-    {"id": 3, "name": "电商图片反推提示词", "type": "skill", "status": "needs_refactor"},
-    {"id": 4, "name": "电商主图诊断", "type": "skill", "status": "published", "published_skill": "ecom-main-image-diagnosis"},
-    {"id": 5, "name": "电商数据分析", "type": "skill", "status": "partially_published", "published_skill": "ecommerce-competitor-analyzer"},
-    {"id": 6, "name": "n8n 内容流水线", "type": "workflow", "status": "feishu_only"},
-    {"id": 7, "name": "电商作图 SOP 素材", "type": "assets", "status": "restricted"},
-    {"id": 8, "name": "爆款主图采集分析", "type": "workflow", "status": "needs_refactor"},
-    {"id": 9, "name": "竞品蒸馏打法地图", "type": "workflow", "status": "needs_refactor"},
-    {"id": 10, "name": "竞品拆解脚本工具包", "type": "toolkit", "status": "needs_refactor"},
-    {"id": 11, "name": "飞书数据中台起步包", "type": "toolkit_template", "status": "needs_refactor"},
-    {"id": 12, "name": "公众号文章转知识库", "type": "workflow", "status": "needs_refactor"},
-    {"id": 13, "name": "工具教程生成", "type": "skill", "status": "needs_refactor"},
-    {"id": 14, "name": "小红书 Skills", "type": "skill_collection", "status": "partially_published", "published_skill": "ecom-market-insight-table"},
-    {"id": 15, "name": "全域蒸馏器", "type": "skill", "status": "needs_refactor"},
-    {"id": 16, "name": "微信群消息分析", "type": "tutorial_skill", "status": "restricted"},
-    {"id": 17, "name": "AI 电商数据分析工作流", "type": "workflow", "status": "deferred"},
-    {"id": 18, "name": "提高 Codex 审美", "type": "skill", "status": "published", "published_skill": "frontend-design-system"},
-    {"id": 19, "name": "AI 评价分析", "type": "skill", "status": "needs_refactor"},
-    {"id": 20, "name": "WorkBuddy 数据分析", "type": "courseware", "status": "feishu_only"},
-    {"id": 21, "name": "达人精灵 TikTok 工作流", "type": "tutorial_materials", "status": "restricted"},
-    {"id": 22, "name": "WorkBuddy + 影刀 RPA", "type": "skill", "status": "published", "published_skill": "rpa-flow-architect"},
-    {"id": 23, "name": "卖家精灵 + 亚马逊运营", "type": "tutorial_materials", "status": "restricted"},
-    {"id": 24, "name": "豆包 + 飞书 SOP", "type": "tutorial_skill", "status": "needs_refactor"}
+  "updated": "2026-10-08",
+  "library": "https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH",
+  "packs": [
+    {
+      "number": 1,
+      "name": "github仓库快速拆解_Skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/OlKtlIQwbyhgA4OKgmtuFg",
+      "status": "已公开",
+      "skills": [
+        "github-repo-dissector"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 2,
+      "name": "github高潜力发现_Skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/KdS3fYBOMFTADwRVTLLw2A",
+      "status": "已公开",
+      "skills": [
+        "github-content-radar"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 3,
+      "name": "电商图片反推提示词_Skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/jgsZE5JG7xryz-iPIqNckw",
+      "status": "已公开",
+      "skills": [
+        "ecom-image-reverse-sop-share"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 4,
+      "name": "电商主图诊断_Skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/K8uvP1AZ0Ur0g_NMONoqlg",
+      "status": "已公开",
+      "skills": [
+        "ecom-main-image-diagnosis"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 5,
+      "name": "电商数据分析_Skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/y5j9a82NcpK7eeBZYXrAnA",
+      "status": "已公开",
+      "skills": [
+        "ecommerce-competitor-analyzer",
+        "external-skill-adapter"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 6,
+      "name": "n8n内容流水线工作流",
+      "category": "工作流类",
+      "article": "https://mp.weixin.qq.com/s/S5w2440BBXgkrJ9ZpBr2RA",
+      "status": "仅飞书",
+      "skills": [],
+      "note": "n8n 工作流资料，不是独立 Skill。"
+    },
+    {
+      "number": 7,
+      "name": "电商作图SOP素材包",
+      "category": "素材参考类",
+      "article": "https://mp.weixin.qq.com/s/e676DXGSJ_-RabQs4Kgdug",
+      "status": "素材待核权属",
+      "skills": [],
+      "note": "保留历史素材入口，未直接转载图片。"
+    },
+    {
+      "number": 8,
+      "name": "爆款主图采集分析工作流",
+      "category": "工作流类",
+      "article": "https://mp.weixin.qq.com/s/6oITmLqQxPgRC5xAlQDJdw",
+      "status": "工作流待整理",
+      "skills": [],
+      "note": "当前为采集分析流程，尚未整理成可安装 Skill。"
+    },
+    {
+      "number": 9,
+      "name": "竞品蒸馏打法地图",
+      "category": "工作流类",
+      "article": "https://mp.weixin.qq.com/s/lImqQ_q4gRi6YBFmjpqIMg",
+      "status": "工作流待整理",
+      "skills": [],
+      "note": "当前为竞品蒸馏方法资料，尚未整理成可安装 Skill。"
+    },
+    {
+      "number": 10,
+      "name": "竞品拆解脚本工具包",
+      "category": "工具类",
+      "article": "https://mp.weixin.qq.com/s/LMfGoki3kx2k1ErZJU-Wxg",
+      "status": "工具待验证",
+      "skills": [],
+      "note": "脚本工具资料，尚未完成可移植运行验证。"
+    },
+    {
+      "number": 11,
+      "name": "飞书数据中台起步包",
+      "category": "工具类",
+      "article": "https://mp.weixin.qq.com/s/CRBmXBn1gX-fIDPqMTt2EQ",
+      "status": "模板待整理",
+      "skills": [],
+      "note": "教程与数据中台起步模板，独立整理后再发布。"
+    },
+    {
+      "number": 12,
+      "name": "公众号文章转知识库",
+      "category": "工作流类",
+      "article": "https://mp.weixin.qq.com/s/FAWNzR59uVi5Al-GRDTOEA",
+      "status": "已公开",
+      "skills": [
+        "wechat-article-knowledge-pack"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 13,
+      "name": "工具教程生成_Skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/wSZVr9HcvR4R0VY-PVfJZA",
+      "status": "已公开",
+      "skills": [
+        "beginner-tutorial-writer"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 14,
+      "name": "小红书skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/O2WHibY3DijuWe0Atsc8iQ",
+      "status": "部分公开",
+      "skills": [
+        "ecom-market-insight-table"
+      ],
+      "note": "原创市场洞察已公开；六个改编自 ClawHub 的 Skill 未核清再发布许可，保留飞书入口。"
+    },
+    {
+      "number": 15,
+      "name": "蒸馏skill",
+      "category": "Skill类",
+      "article": "https://mp.weixin.qq.com/s/KaoCmKUMlffaRJCfbA8qPQ",
+      "status": "已公开",
+      "skills": [
+        "full-spectrum-distiller"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 16,
+      "name": "ai分析微信群消息",
+      "category": "教程类",
+      "article": "https://mp.weixin.qq.com/s/atFNsZOtgaOTj-skglSJ9w",
+      "status": "方法已公开",
+      "skills": [
+        "chatlab-analyzer"
+      ],
+      "note": "仅发布原创 ChatLab 分析方法；不包含第三方 WeFlow 安装程序。"
+    },
+    {
+      "number": 17,
+      "name": "ai电商数据分析工作流",
+      "category": "工作流类",
+      "article": "https://mp.weixin.qq.com/s/P8CtuKZ0a0K1lIUJ2MLo3w",
+      "status": "已公开",
+      "skills": [
+        "ecommerce-data-analysis-workflow"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 18,
+      "name": "提高codex审美",
+      "category": "skill类",
+      "article": "https://mp.weixin.qq.com/s/Dlft5fCP_yrv2LCvvLhrpQ",
+      "status": "已公开",
+      "skills": [
+        "frontend-design-system"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 19,
+      "name": "AI做评价分析",
+      "category": "skill类",
+      "article": "https://mp.weixin.qq.com/s/aGtkFdsdwUofWVF1vlTGvg",
+      "status": "已公开",
+      "skills": [
+        "ecommerce-review-analysis"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 20,
+      "name": "workbuddy做数据分析",
+      "category": "课件",
+      "article": "https://mp.weixin.qq.com/s/KfluOaZwBNG4kRihGIqsUw",
+      "status": "仅飞书",
+      "skills": [],
+      "note": "数据分析课件，不是独立 Skill。"
+    },
+    {
+      "number": 21,
+      "name": "达人精灵Tik Tok运营工作流",
+      "category": "教程+课件+资料",
+      "article": "https://mp.weixin.qq.com/s/EtjOGeiZNbYnS2UIEgNurw",
+      "status": "方法已公开",
+      "skills": [
+        "kolsprite-tiktok-ops"
+      ],
+      "note": "原创工作方法已公开；运行需要用户的达人精灵账号及 MCP 权限。"
+    },
+    {
+      "number": 22,
+      "name": "workbuddy+影刀RPAskill",
+      "category": "skill类",
+      "article": "https://mp.weixin.qq.com/s/zlXjx6QLU-R8zLqDm33MuA",
+      "status": "已公开",
+      "skills": [
+        "rpa-flow-architect"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 23,
+      "name": "卖家精灵+亚马逊运营全流程",
+      "category": "教程+课件+资料",
+      "article": "https://mp.weixin.qq.com/s/R5IitIDw_-hK_rRsCMr68A",
+      "status": "方法已公开",
+      "skills": [
+        "sellersprite-amazon-ops"
+      ],
+      "note": "原创工作方法已公开；运行需要用户的卖家精灵账号及 MCP 权限。"
+    },
+    {
+      "number": 24,
+      "name": "豆包+飞书SOP ",
+      "category": "教程+课件+资料",
+      "article": "https://mp.weixin.qq.com/s/PbS2nAoCm4qei57Q_8hhIw",
+      "status": "已公开",
+      "skills": [
+        "feishu-project-weekly-report"
+      ],
+      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+    },
+    {
+      "number": 25,
+      "name": "电商情报站",
+      "category": "教程+课件+资料",
+      "article": "https://mp.weixin.qq.com/s/vWCfVG37wrEyKn6GeCzZWA",
+      "status": "仅飞书",
+      "skills": [],
+      "note": "当前字段标为教程、课件与资料；本次未取得附件正文，未据此新增 Skill。"
+    },
+    {
+      "number": 26,
+      "name": "codex+blender",
+      "category": "教程+课件+资料",
+      "article": "https://mp.weixin.qq.com/s/dfTjSJWsKi1cbPX-Dn7z3A",
+      "status": "仅飞书",
+      "skills": [],
+      "note": "当前字段标为教程、附件为提示词 Markdown；本次未取得附件正文。"
+    },
+    {
+      "number": 27,
+      "name": "数据中台",
+      "category": "教程+课件+资料",
+      "article": "https://mp.weixin.qq.com/s/jH0W1dE2iySszq0vTKRswQ",
+      "status": "仅飞书",
+      "skills": [],
+      "note": "当前附件为文档 ZIP；本次未取得附件正文，未据此新增 Skill。"
+    }
   ]
 }

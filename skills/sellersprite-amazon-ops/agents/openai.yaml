@@ -1,0 +1,4 @@
+interface:
+  display_name: "卖家精灵亚马逊运营"
+  short_description: "用卖家精灵 MCP 做机会词扫描、竞品拆解、词库搭建和 Listing 方案。"
+  default_prompt: "请用 $sellersprite-amazon-ops 根据我提供的资料完成卖家精灵亚马逊运营，保留来源并说明缺失信息。"

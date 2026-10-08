@@ -1,0 +1,4 @@
+interface:
+  display_name: "电商评价分析"
+  short_description: "按数据质量、清洗、分类、人群、归因、参照物与报告七步分析评论。"
+  default_prompt: "请用 $ecommerce-review-analysis 根据我提供的资料完成电商评价分析，保留来源并说明缺失信息。"

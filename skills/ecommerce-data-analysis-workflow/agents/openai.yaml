@@ -1,0 +1,4 @@
+interface:
+  display_name: "电商报表重建与对账"
+  short_description: "从电商导出表和维护表重建明细、重算业务公式、对账并输出报告。"
+  default_prompt: "请用 $ecommerce-data-analysis-workflow 根据我提供的资料完成电商报表重建与对账，保留来源并说明缺失信息。"

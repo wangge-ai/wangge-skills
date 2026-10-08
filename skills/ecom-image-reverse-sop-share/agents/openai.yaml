@@ -1,0 +1,4 @@
+interface:
+  display_name: "电商图片拆解与反推提示词"
+  short_description: "把产品图和竞品图拆成图位任务、购买疑问、画面结构及自家商品提示词。"
+  default_prompt: "请用 $ecom-image-reverse-sop-share 根据我提供的资料完成电商图片拆解与反推提示词，保留来源并说明缺失信息。"

@@ -1,10 +1,10 @@
 {
   "schema_version": "1.1",
-  "updated": "2026-09-03",
+  "updated": "2026-10-08",
   "owner": "wangge-ai",
   "catalog": "wangge-skills",
   "homepage": "https://github.com/wangge-ai/wangge-skills",
-  "community": "https://t2vq6a99kv.feishuapp.com/app/app_17a7exe7wzv/",
+  "community": "https://t2vq6a99kv.feishuapp.com/app/app_17fgnu76fy9/",
   "feishu_library": "https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH",
   "skills": [
     {
@@ -13,7 +13,12 @@
       "repo": "wangge-skills",
       "subdir": "skills/github-repo-dissector",
       "summary": "拆解 GitHub 仓库的定位、架构、维护状态、使用成本与落地方式。",
-      "keywords": ["GitHub", "仓库分析", "开源项目", "安装试跑"]
+      "keywords": [
+        "GitHub",
+        "仓库分析",
+        "开源项目",
+        "安装试跑"
+      ]
     },
     {
       "name": "github-content-radar",
@@ -21,7 +26,12 @@
       "repo": "wangge-skills",
       "subdir": "skills/github-content-radar",
       "summary": "发现、去重和筛选值得实测、分享或写成公众号文章的 GitHub 项目。",
-      "keywords": ["GitHub", "项目发现", "内容选题", "公众号素材"]
+      "keywords": [
+        "GitHub",
+        "项目发现",
+        "内容选题",
+        "公众号素材"
+      ]
     },
     {
       "name": "ecom-main-image-diagnosis",
@@ -29,7 +39,12 @@
       "repo": "wangge-skills",
       "subdir": "skills/ecom-main-image-diagnosis",
       "summary": "诊断电商主图、搜索结果卡和广告素材中的视觉与点击问题。",
-      "keywords": ["电商主图", "视觉诊断", "点击率", "A/B测试"]
+      "keywords": [
+        "电商主图",
+        "视觉诊断",
+        "点击率",
+        "A/B测试"
+      ]
     },
     {
       "name": "frontend-design-system",
@@ -37,7 +52,12 @@
       "repo": "wangge-skills",
       "subdir": "skills/frontend-design-system",
       "summary": "为网页、报告、工作台和多页面产品提供主题优先的设计与视觉验收方法。",
-      "keywords": ["网页设计", "设计系统", "HTML", "视觉验收"]
+      "keywords": [
+        "网页设计",
+        "设计系统",
+        "HTML",
+        "视觉验收"
+      ]
     },
     {
       "name": "rpa-flow-architect",
@@ -45,7 +65,12 @@
       "repo": "wangge-skills",
       "subdir": "skills/rpa-flow-architect",
       "summary": "设计、诊断、改造和验收影刀等 GUI RPA 流程。",
-      "keywords": ["RPA", "影刀", "自动化", "流程审计"]
+      "keywords": [
+        "RPA",
+        "影刀",
+        "自动化",
+        "流程审计"
+      ]
     },
     {
       "name": "ecom-market-insight-table",
@@ -53,7 +78,12 @@
       "repo": "wangge-skills",
       "subdir": "skills/ecom-market-insight-table",
       "summary": "把商品列表表格转成价格带、竞争结构、词根和市场机会洞察。",
-      "keywords": ["Excel", "市场洞察", "价格带", "选品"]
+      "keywords": [
+        "Excel",
+        "市场洞察",
+        "价格带",
+        "选品"
+      ]
     },
     {
       "name": "ecommerce-competitor-analyzer",
@@ -61,7 +91,166 @@
       "repo": "wangge-skills",
       "subdir": "skills/ecommerce-competitor-analyzer",
       "summary": "基于商品链接、表格、截图和评论证据完成竞品分析。",
-      "keywords": ["竞品分析", "商品数据", "评论VOC", "市场研究"]
+      "keywords": [
+        "竞品分析",
+        "商品数据",
+        "评论VOC",
+        "市场研究"
+      ]
+    },
+    {
+      "name": "ecom-image-reverse-sop-share",
+      "category": "电商视觉",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-image-reverse-sop-share",
+      "summary": "把产品图和竞品图拆成图位任务、购买疑问、画面结构及自家商品提示词。",
+      "keywords": [
+        "电商图片拆解与反推提示词",
+        "电商视觉"
+      ],
+      "source_pack": 3,
+      "source_article": "https://mp.weixin.qq.com/s/jgsZE5JG7xryz-iPIqNckw",
+      "dependencies": "支持图片阅读的 Agent；图片生成工具按用户已有环境选用。"
+    },
+    {
+      "name": "external-skill-adapter",
+      "category": "Skill 开发",
+      "repo": "wangge-skills",
+      "subdir": "skills/external-skill-adapter",
+      "summary": "把外部 Skill 或提示词包适配到目标 Agent，核对来源、工具、输出和验证边界。",
+      "keywords": [
+        "外部 Skill 适配",
+        "Skill 开发"
+      ],
+      "source_pack": 5,
+      "source_article": "https://mp.weixin.qq.com/s/y5j9a82NcpK7eeBZYXrAnA",
+      "dependencies": "文件读写；需要读远程来源时使用用户可用的搜索或浏览器工具。"
+    },
+    {
+      "name": "wechat-article-knowledge-pack",
+      "category": "知识库与内容",
+      "repo": "wangge-skills",
+      "subdir": "skills/wechat-article-knowledge-pack",
+      "summary": "把公众号文章链接或本地导出文件整理为原文档案、元数据和可追溯知识卡。",
+      "keywords": [
+        "公众号文章转知识库",
+        "知识库与内容"
+      ],
+      "source_pack": 12,
+      "source_article": "https://mp.weixin.qq.com/s/FAWNzR59uVi5Al-GRDTOEA",
+      "dependencies": "本地文件读写；联网采集工具是可选依赖，遇验证页面使用已有导出文件。"
+    },
+    {
+      "name": "beginner-tutorial-writer",
+      "category": "知识库与内容",
+      "repo": "wangge-skills",
+      "subdir": "skills/beginner-tutorial-writer",
+      "summary": "从产品名与官方资料生成可操作的新手教程，配搜索查询脚本和独立 HTML 渲染脚本。",
+      "keywords": [
+        "工具新手完整教程",
+        "知识库与内容"
+      ],
+      "source_pack": 13,
+      "source_article": "https://mp.weixin.qq.com/s/wSZVr9HcvR4R0VY-PVfJZA",
+      "dependencies": "Python 3.10+；查询清单脚本需要 PyYAML，HTML 渲染脚本仅用标准库。"
+    },
+    {
+      "name": "full-spectrum-distiller",
+      "category": "研究与情报",
+      "repo": "wangge-skills",
+      "subdir": "skills/full-spectrum-distiller",
+      "summary": "按行业、品牌、网站或话题组织来源、竞品、知识地图与机会研究。",
+      "keywords": [
+        "全域蒸馏器",
+        "研究与情报"
+      ],
+      "source_pack": 15,
+      "source_article": "https://mp.weixin.qq.com/s/KaoCmKUMlffaRJCfbA8qPQ",
+      "dependencies": "搜索与网页阅读能力；本地文件写入。没有后台常驻监控程序。"
+    },
+    {
+      "name": "chatlab-analyzer",
+      "category": "知识库与内容",
+      "repo": "wangge-skills",
+      "subdir": "skills/chatlab-analyzer",
+      "summary": "使用 ChatLab 分析用户已有聊天导出，组织统计、搜索、SQL 和证据报告。",
+      "keywords": [
+        "ChatLab 群聊分析",
+        "知识库与内容"
+      ],
+      "source_pack": 16,
+      "source_article": "https://mp.weixin.qq.com/s/atFNsZOtgaOTj-skglSJ9w",
+      "dependencies": "需另行安装官方 chatlab-cli；AI 功能另需用户配置模型。此包不包含 WeFlow 或其他安装程序。"
+    },
+    {
+      "name": "ecommerce-data-analysis-workflow",
+      "category": "电商数据分析",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecommerce-data-analysis-workflow",
+      "summary": "从电商导出表和维护表重建明细、重算业务公式、对账并输出报告。",
+      "keywords": [
+        "电商报表重建与对账",
+        "电商数据分析"
+      ],
+      "source_pack": 17,
+      "source_article": "https://mp.weixin.qq.com/s/P8CtuKZ0a0K1lIUJ2MLo3w",
+      "dependencies": "支持表格读写和代码执行的 Agent；具体表格库按实际文件选择。"
+    },
+    {
+      "name": "ecommerce-review-analysis",
+      "category": "电商数据分析",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecommerce-review-analysis",
+      "summary": "按数据质量、清洗、分类、人群、归因、参照物与报告七步分析评论。",
+      "keywords": [
+        "电商评价分析",
+        "电商数据分析"
+      ],
+      "source_pack": 19,
+      "source_article": "https://mp.weixin.qq.com/s/aGtkFdsdwUofWVF1vlTGvg",
+      "dependencies": "完整工作流由 Agent 执行；分类骨架 CLI 支持 CSV（标准库）和 XLSX（openpyxl）。骨架不自动完成全部七步。"
+    },
+    {
+      "name": "kolsprite-tiktok-ops",
+      "category": "跨境电商",
+      "repo": "wangge-skills",
+      "subdir": "skills/kolsprite-tiktok-ops",
+      "summary": "用已授权的达人精灵 MCP 做视频、商品、店铺与达人研究，输出可追溯运营方案。",
+      "keywords": [
+        "达人精灵 TikTok 运营",
+        "跨境电商"
+      ],
+      "source_pack": 21,
+      "source_article": "https://mp.weixin.qq.com/s/EtjOGeiZNbYnS2UIEgNurw",
+      "dependencies": "需用户的达人精灵账号和可用 MCP 权限；本仓库只提供工作方法，不提供服务或凭证。"
+    },
+    {
+      "name": "sellersprite-amazon-ops",
+      "category": "跨境电商",
+      "repo": "wangge-skills",
+      "subdir": "skills/sellersprite-amazon-ops",
+      "summary": "用卖家精灵 MCP 做机会词扫描、竞品拆解、词库搭建和 Listing 方案。",
+      "keywords": [
+        "卖家精灵亚马逊运营",
+        "跨境电商"
+      ],
+      "source_pack": 23,
+      "source_article": "https://mp.weixin.qq.com/s/R5IitIDw_-hK_rRsCMr68A",
+      "dependencies": "需用户的卖家精灵账号和可用 MCP 权限；本仓库只提供工作方法，不包含第三方客户端。"
+    },
+    {
+      "name": "feishu-project-weekly-report",
+      "category": "协作与自动化",
+      "repo": "wangge-skills",
+      "subdir": "skills/feishu-project-weekly-report",
+      "summary": "从群聊、文档和多维表格收集证据，生成周报、跟进表及催办消息草稿。",
+      "keywords": [
+        "飞书项目周报",
+        "协作与自动化"
+      ],
+      "source_pack": 24,
+      "source_article": "https://mp.weixin.qq.com/s/PbS2nAoCm4qei57Q_8hhIw",
+      "dependencies": "需已授权的飞书连接器或 CLI；发送消息按用户的具体授权执行。"
     }
   ]
 }

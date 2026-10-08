@@ -1,0 +1,4 @@
+interface:
+  display_name: "达人精灵 TikTok 运营"
+  short_description: "用已授权的达人精灵 MCP 做视频、商品、店铺与达人研究，输出可追溯运营方案。"
+  default_prompt: "请用 $kolsprite-tiktok-ops 根据我提供的资料完成达人精灵 TikTok 运营，保留来源并说明缺失信息。"
