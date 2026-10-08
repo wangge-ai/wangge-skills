@@ -1,0 +1,4 @@
+interface:
+  display_name: 电商视频分析与策划
+  short_description: 从本地视频提取时长与证据索引，形成单条脚本、分镜及营销视频矩阵。
+  default_prompt: 使用 $ecom-video-workflow。分析这个本地产品视频，再提出一条新脚本，区分看见的画面与尚未证实的卖点。

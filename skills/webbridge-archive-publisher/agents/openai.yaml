@@ -1,0 +1,4 @@
+interface:
+  display_name: 网页与飞书资料归档
+  short_description: 通过授权浏览器保存原始证据、Markdown、截图和阅读入口，记录失败及资源对应关系。
+  default_prompt: 使用 $webbridge-archive-publisher。归档我已授权访问的这些网页资料，保存正文、来源和素材，访问受限时记录并停止该项。

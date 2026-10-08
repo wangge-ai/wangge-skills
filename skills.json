@@ -251,6 +251,292 @@
       "source_pack": 24,
       "source_article": "https://mp.weixin.qq.com/s/PbS2nAoCm4qei57Q_8hhIw",
       "dependencies": "需已授权的飞书连接器或 CLI；发送消息按用户的具体授权执行。"
+    },
+    {
+      "name": "ecom-one-photo-page",
+      "category": "电商视觉",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-one-photo-page",
+      "summary": "从一张产品照片建立 SKU 与数量约束，交付六张主图和详情页方案、独立提示词及产品一致性检查。",
+      "keywords": [
+        "一张产品图做商品页",
+        "电商视觉"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "基础脚本仅需 Python；生成成品需要用户可用的生图工具，结构检查不能替代目视检查。"
+    },
+    {
+      "name": "ecom-page-planner",
+      "category": "电商视觉",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-page-planner",
+      "summary": "从商品事实、竞品表达、关键词和反馈策划定位、卖点、1+5 主图序列及详情页。",
+      "keywords": [
+        "商品页定位与策划",
+        "电商视觉"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + openpyxl。脚手架只登记证据和输出任务，不自动产生完整策划结论。"
+    },
+    {
+      "name": "ecom-product-assets-collector",
+      "category": "资料采集",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-product-assets-collector",
+      "summary": "从商品链接或保存的 HTML 采集主图、详情图和证明素材，保留来源与失败状态。",
+      "keywords": [
+        "商品图片与详情素材采集",
+        "资料采集"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + Playwright（离线 HTML 路线也使用其页面解析）；实时浏览器路线需要已授权的 WebBridge，独立浏览器需安装 Chromium。"
+    },
+    {
+      "name": "ecom-ranking-main-image-collector",
+      "category": "资料采集",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-ranking-main-image-collector",
+      "summary": "从公开榜单、保存页面或导出的商品卡片整理主图样本、位置、来源、联系表和报告。",
+      "keywords": [
+        "排行与搜索主图采集",
+        "资料采集"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + Pillow。实时采集需网络及用户授权的浏览器；保存页面和结构化 JSON 可离线处理。"
+    },
+    {
+      "name": "ecom-video-workflow",
+      "category": "视频制作",
+      "repo": "wangge-skills",
+      "subdir": "skills/ecom-video-workflow",
+      "summary": "从本地视频提取时长与证据索引，形成单条脚本、分镜及营销视频矩阵。",
+      "keywords": [
+        "电商视频分析与策划",
+        "视频制作"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + openpyxl；提取真实时长需要 FFprobe。脚本输出证据脚手架，画面和字幕须由 Agent 实际检查。"
+    },
+    {
+      "name": "analysis-report-orchestrator",
+      "category": "数据分析",
+      "repo": "wangge-skills",
+      "subdir": "skills/analysis-report-orchestrator",
+      "summary": "按决策任务选择监测、诊断、比较、预测等报告类型，审计资料、选择模型并检查结论边界。",
+      "keywords": [
+        "证据型分析报告",
+        "数据分析"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python；报告结构检查器不评判商业结论是否正确，核心结论仍需证据和人工复核。"
+    },
+    {
+      "name": "document-to-markdown",
+      "category": "资料采集",
+      "repo": "wangge-skills",
+      "subdir": "skills/document-to-markdown",
+      "summary": "调用 MarkItDown 转换文档、表格及网页，支持批量输出、保留原稿与 PDF 中文断行清理。",
+      "keywords": [
+        "文档批量转 Markdown",
+        "资料采集"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + markitdown；所选格式需相应扩展依赖。扫描件 OCR、音频识别和旧版 DOC 转换需另配工具。"
+    },
+    {
+      "name": "gzh-title-strategist",
+      "category": "内容生产",
+      "repo": "wangge-skills",
+      "subdir": "skills/gzh-title-strategist",
+      "summary": "按读者任务、文章证据和推荐场景生成、比较及评分标题，避免无法兑现的数字和结果。",
+      "keywords": [
+        "公众号标题策划",
+        "内容生产"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python；脚本评分是表达检查，不能预测推荐量或替代正文证据核对。"
+    },
+    {
+      "name": "human-writing",
+      "category": "内容生产",
+      "repo": "wangge-skills",
+      "subdir": "skills/human-writing",
+      "summary": "按现实与虚构边界组织中文长文、教程、故事和口播，并提供语体与重复表达检查。",
+      "keywords": [
+        "自然中文写作与改稿",
+        "内容生产"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python；风格检查仅覆盖明确的规则，不证明事实正确。默认风格可由用户当前文体要求覆盖。"
+    },
+    {
+      "name": "wechat-account-data-review",
+      "category": "数据分析",
+      "repo": "wangge-skills",
+      "subdir": "skills/wechat-account-data-review",
+      "summary": "合并公众号趋势与用户增长导出、文章档案，区分文章指标、每日信号和版式线索。",
+      "keywords": [
+        "公众号后台数据复盘",
+        "数据分析"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + pandas + openpyxl + xlrd + beautifulsoup4 + lxml + tabulate；输入需要用户导出的后台表及约定文章档案。"
+    },
+    {
+      "name": "wechat-group-insight-reports",
+      "category": "数据分析",
+      "repo": "wangge-skills",
+      "subdir": "skills/wechat-group-insight-reports",
+      "summary": "从群聊导出生成匿名洞察工作台、内部需求报告及高频问答，支持原文定位和增量更新。",
+      "keywords": [
+        "群聊需求与问答分析",
+        "数据分析"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "本地处理仅需 Python；飞书发布需用户自己的连接器或 CLI 与权限。群聊原文、账号及状态文件不得上传公开仓库。"
+    },
+    {
+      "name": "wechat-to-xiaohongshu-rewriter",
+      "category": "内容生产",
+      "repo": "wangge-skills",
+      "subdir": "skills/wechat-to-xiaohongshu-rewriter",
+      "summary": "筛选长文、收束单一读者任务，制作逐页脚本、3:4 卡片及可上传发布包。",
+      "keywords": [
+        "公众号文章转小红书",
+        "内容生产"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "文字方案不需脚本依赖；PNG 导出需用户可用的浏览器截图工具，新增位图素材需生图工具；本包不自动发布。"
+    },
+    {
+      "name": "xiaohongshu-account-dissector",
+      "category": "内容生产",
+      "repo": "wangge-skills",
+      "subdir": "skills/xiaohongshu-account-dissector",
+      "summary": "用账号页、笔记截图或导出分析定位、内容货架、封面标题、信任和转化路径。",
+      "keywords": [
+        "小红书账号拆解",
+        "内容生产"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "需要用户提供的截图或已授权浏览器/检索能力；方法包不附带平台账号或采集客户端。"
+    },
+    {
+      "name": "ai-topic-planner",
+      "category": "内容生产",
+      "repo": "wangge-skills",
+      "subdir": "skills/ai-topic-planner",
+      "summary": "从热点来源发现、去重并核验事件，按实际价值、证据与制作成本生成选题简报。",
+      "keywords": [
+        "AI 热点选题",
+        "内容生产"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "需要网络检索或用户提供的来源；AIHot 为可选外部来源，接口和能力以使用时核验为准。"
+    },
+    {
+      "name": "deliberate-practice-coach",
+      "category": "学习训练",
+      "repo": "wangge-skills",
+      "subdir": "skills/deliberate-practice-coach",
+      "summary": "通过错误模拟、漏洞检测、反向教学与复盘，将学习目标转成可观察的互动练习。",
+      "keywords": [
+        "刻意练习私教",
+        "学习训练"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "纯方法包，无脚本依赖；进度比较依赖当前对话或用户提供的训练记录。"
+    },
+    {
+      "name": "ai-data-training-program-planner",
+      "category": "学习训练",
+      "repo": "wangge-skills",
+      "subdir": "skills/ai-data-training-program-planner",
+      "summary": "设计大学生 AI 与 Excel、SQL、Python、BI 能力路径、任务训练和学习效果证据。",
+      "keywords": [
+        "AI 与数据分析教学设计",
+        "学习训练"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "纯方法包；建议搭配 deliberate-practice-coach，也可直接按内含八种训练模式执行。"
+    },
+    {
+      "name": "video-producer-core",
+      "category": "视频制作",
+      "repo": "wangge-skills",
+      "subdir": "skills/video-producer-core",
+      "summary": "组织选题、脚本、分镜、素材、音频与渲染验证，连接不同视频工具。",
+      "keywords": [
+        "视频制作总流程",
+        "视频制作"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "环境检查脚本适用 Windows PowerShell；成片依任务选用 FFmpeg、TTS 和渲染工具，HyperFrames/Remotion 插件另装。"
+    },
+    {
+      "name": "manim-hyperframes-video",
+      "category": "视频制作",
+      "repo": "wangge-skills",
+      "subdir": "skills/manim-hyperframes-video",
+      "summary": "用 Manim 处理公式和系统逻辑，用 HyperFrames 组织时间线、字幕及混合素材。",
+      "keywords": [
+        "技术讲解动画",
+        "视频制作"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "需另装 Manim、FFmpeg、Node/HyperFrames；MathTex 需 LaTeX。只有实际渲染及验片后才能称成片。"
+    },
+    {
+      "name": "top10stats-data-video",
+      "category": "视频制作",
+      "repo": "wangge-skills",
+      "subdir": "skills/top10stats-data-video",
+      "summary": "把热点映射到可核验的数据来源与视频形态，清洗数据并制作排行、分镜、封面及 MP4。",
+      "keywords": [
+        "数据动态排行视频",
+        "视频制作"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + pandas + numpy + Pillow + openpyxl，FFmpeg/FFprobe；在线数据来源需使用时重新核验，种子库不是现时数据。"
+    },
+    {
+      "name": "wechat-cover-maker",
+      "category": "内容生产",
+      "repo": "wangge-skills",
+      "subdir": "skills/wechat-cover-maker",
+      "summary": "生成留白背景后本地排入准确中文标题，支持多张封面、尺寸与移动缩略图检查。",
+      "keywords": [
+        "公众号封面制作",
+        "内容生产"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + Pillow 与可用中文字体；背景需用户素材或可用生图工具，HTML 截图备选需浏览器。"
+    },
+    {
+      "name": "web-collection-orchestrator",
+      "category": "资料采集",
+      "repo": "wangge-skills",
+      "subdir": "skills/web-collection-orchestrator",
+      "summary": "发现并去重链接，组织可恢复采集、来源与资产记录，交付离线可读的资料合集。",
+      "keywords": [
+        "跨平台资料采集编排",
+        "资料采集"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "基础整理与打包仅需 Python；采集需用户已授权浏览器及相应平台工具；不附带账号、Cookie 或私有导出。"
+    },
+    {
+      "name": "webbridge-archive-publisher",
+      "category": "资料采集",
+      "repo": "wangge-skills",
+      "subdir": "skills/webbridge-archive-publisher",
+      "summary": "通过授权浏览器保存原始证据、Markdown、截图和阅读入口，记录失败及资源对应关系。",
+      "keywords": [
+        "网页与飞书资料归档",
+        "资料采集"
+      ],
+      "source_type": "maintainer-local-workflow",
+      "dependencies": "Python + Pillow；PowerShell 兼容采集脚本需用户另装并授权 Kimi WebBridge，其本地接口可能随版本变化。"
     }
   ]
 }

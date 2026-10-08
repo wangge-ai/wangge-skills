@@ -81,9 +81,11 @@
       "name": "爆款主图采集分析工作流",
       "category": "工作流类",
       "article": "https://mp.weixin.qq.com/s/6oITmLqQxPgRC5xAlQDJdw",
-      "status": "工作流待整理",
-      "skills": [],
-      "note": "当前为采集分析流程，尚未整理成可安装 Skill。"
+      "status": "对应方法已公开",
+      "skills": [
+        "ecom-ranking-main-image-collector"
+      ],
+      "note": "可安装采集方法由本地维护工作流整理；历史资料包和原图未整包转载。"
     },
     {
       "number": 9,

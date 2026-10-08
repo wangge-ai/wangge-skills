@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>群聊重要信息雷达</title>
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --surface: #ffffff;
+      --surface-2: #eef2f7;
+      --text: #182033;
+      --muted: #667085;
+      --border: #d9e0ea;
+      --accent: #315ee7;
+      --accent-soft: #e8efff;
+      --accent-2: #c45122;
+      --danger: #b42318;
+      --success: #157a55;
+      --warning: #a15c08;
+      --font-display: "Songti SC", "SimSun", serif;
+      --font-body: "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+      --font-mono: "Cascadia Mono", "Consolas", monospace;
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --radius-sm: 5px;
+      --radius-md: 8px;
+      --duration-fast: 160ms;
+    }
+    * { box-sizing: border-box; }
+    html { color-scheme: light; }
+    body { margin: 0; color: var(--text); background: var(--bg); font: 15px/1.55 var(--font-body); }
+    button, input, select { font: inherit; }
+    button, input, select { min-height: 44px; }
+    button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid rgba(49, 94, 231, .28); outline-offset: 2px; }
+    button:disabled { cursor: not-allowed; opacity: .45; }
+    .app-shell { min-height: 100vh; display: grid; grid-template-columns: 216px minmax(0, 1fr); }
+    .sidebar { position: sticky; top: 0; align-self: start; min-height: 100vh; padding: var(--space-5) var(--space-3); background: #121827; color: #eff4ff; }
+    .brand { display: flex; align-items: center; gap: 10px; padding: 0 var(--space-2) var(--space-5); }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; flex: 0 0 auto; background: var(--accent); border-radius: var(--radius-md); font: 700 18px/1 var(--font-display); }
+    .brand-title { font-weight: 700; line-height: 1.25; }
+    .brand-subtitle { margin-top: 2px; color: #9eadc7; font-size: 12px; }
+    .nav-label { padding: 12px 10px 6px; color: #8291ad; font-size: 12px; letter-spacing: .08em; }
+    .nav-item { width: 100%; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 0; border-radius: var(--radius-sm); color: #c9d3e4; background: transparent; text-align: left; cursor: pointer; transition: background var(--duration-fast), color var(--duration-fast); }
+    .nav-item:hover { color: #fff; background: #1e2a40; }
+    .nav-item[aria-current="page"] { color: #fff; background: #263655; }
+    .nav-count { margin-left: auto; color: #93a4c1; font: 12px/1 var(--font-mono); }
+    .local-note { margin: var(--space-5) var(--space-2) 0; padding-top: var(--space-4); border-top: 1px solid #2b3548; color: #9eadc7; font-size: 12px; }
+    .local-note strong { display: block; margin-bottom: 4px; color: #8be0bd; font-weight: 600; }
+    .main { min-width: 0; padding: var(--space-5); }
+    .page-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-5); margin-bottom: var(--space-4); }
+    .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+    h1, h2, h3 { margin: 0; }
+    h1 { margin-top: 4px; font: 700 clamp(25px, 3vw, 38px)/1.18 var(--font-display); letter-spacing: -.02em; }
+    .lead { max-width: 720px; margin: 8px 0 0; color: var(--muted); }
+    .header-actions { display: flex; gap: var(--space-2); flex: 0 0 auto; }
+    .button { padding: 0 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); background: var(--surface); cursor: pointer; transition: border-color var(--duration-fast), background var(--duration-fast); }
+    .button:hover { border-color: #aab5c6; background: var(--surface-2); }
+    .button.primary { border-color: var(--accent); color: #fff; background: var(--accent); }
+    .button.primary:hover { background: #244cc6; }
+    .toolbar { display: flex; align-items: end; flex-wrap: wrap; gap: var(--space-3); padding: var(--space-3) var(--space-4); border: 1px solid var(--border); background: var(--surface); }
+    .field { min-width: 0; display: grid; gap: 5px; color: var(--muted); font-size: 12px; }
+    .field input, .field select { min-width: 0; padding: 0 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); background: var(--surface); }
+    .field input:hover, .field select:hover { border-color: #aab5c6; }
+    .toolbar-status { margin-left: auto; align-self: center; color: var(--muted); font-size: 12px; }
+    .metric-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: var(--space-4) 0; border-block: 1px solid var(--border); background: var(--surface); }
+    .metric { min-width: 0; padding: var(--space-3) var(--space-4); border-right: 1px solid var(--border); }
+    .metric:last-child { border-right: 0; }
+    .metric-label { color: var(--muted); font-size: 12px; }
+    .metric-value { margin-top: 4px; font: 700 25px/1.2 var(--font-mono); }
+    .metric-note { margin-top: 4px; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+    .boundary-banner { display: flex; align-items: flex-start; gap: 9px; margin-bottom: var(--space-4); padding: 10px 12px; border-left: 3px solid var(--warning); color: #69410b; background: #fff7e8; font-size: 13px; }
+    .boundary-banner[hidden] { display: none; }
+    .charts { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr); gap: var(--space-4); }
+    .panel { min-width: 0; border: 1px solid var(--border); background: var(--surface); }
+    .panel-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); min-height: 58px; padding: 12px 14px; border-bottom: 1px solid var(--border); }
+    .panel-head h2 { font-size: 16px; }
+    .panel-subtitle { margin-top: 3px; color: var(--muted); font-size: 12px; }
+    .legend { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px 12px; color: var(--muted); font-size: 11px; }
+    .legend-button { min-height: 28px; padding: 0; border: 0; color: var(--muted); background: transparent; cursor: pointer; }
+    .legend-button[aria-pressed="false"] { text-decoration: line-through; opacity: .55; }
+    .swatch { display: inline-block; width: 9px; height: 9px; margin-right: 5px; vertical-align: 0; background: var(--swatch); }
+    .swatch.dot { border-radius: 50%; }
+    .chart-wrap { position: relative; min-height: 250px; padding: 8px 8px 4px; }
+    .chart-wrap svg { display: block; width: 100%; height: 245px; overflow: visible; }
+    .chart-frame { fill: none; stroke: var(--border); }
+    .grid-line { stroke: var(--border); stroke-width: 1; }
+    .axis-text { fill: var(--muted); font: 11px var(--font-body); }
+    .axis-title { fill: var(--text); font: 12px var(--font-body); }
+    .message-bar { fill: var(--accent); opacity: .8; cursor: pointer; transition: opacity var(--duration-fast); }
+    .message-bar:hover, .message-bar.is-selected { opacity: 1; }
+    .question-line { fill: none; stroke: var(--accent-2); stroke-width: 2.5; }
+    .question-dot { fill: var(--surface); stroke: var(--accent-2); stroke-width: 2.5; }
+    .topic-line { fill: none; stroke-width: 2.3; }
+    .topic-dot { stroke: var(--surface); stroke-width: 1.5; }
+    .chart-tooltip { position: absolute; z-index: 4; pointer-events: none; max-width: 230px; padding: 7px 9px; border: 1px solid #1b2436; border-radius: var(--radius-sm); color: #fff; background: #1b2436; font-size: 12px; transform: translate(-50%, calc(-100% - 10px)); }
+    .chart-tooltip[hidden] { display: none; }
+    .review-area { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(330px, .8fr); gap: var(--space-4); margin-top: var(--space-4); }
+    .list-controls { display: flex; align-items: end; flex-wrap: wrap; gap: var(--space-2); padding: 10px 12px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
+    .list-controls .field { flex: 1 1 130px; }
+    .insight-list { min-height: 320px; }
+    .insight-row { width: 100%; display: grid; grid-template-columns: 7px minmax(0, 1fr) auto; gap: 12px; align-items: stretch; min-height: 92px; padding: 12px 14px 12px 0; border: 0; border-bottom: 1px solid var(--border); color: var(--text); background: var(--surface); text-align: left; cursor: pointer; }
+    .insight-row:last-child { border-bottom: 0; }
+    .insight-row:hover { background: #f8faff; }
+    .insight-row[aria-selected="true"] { background: var(--accent-soft); }
+    .importance-rail { background: var(--rail); }
+    .insight-title { font-weight: 700; line-height: 1.45; }
+    .insight-summary { margin-top: 4px; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+    .insight-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 7px; color: var(--muted); font-size: 11px; }
+    .candidate-label { align-self: start; padding-top: 2px; color: var(--candidate-color); font-size: 11px; font-weight: 700; white-space: nowrap; }
+    .empty-state { padding: 48px 22px; color: var(--muted); text-align: center; }
+    .detail { min-width: 0; align-self: start; position: sticky; top: 16px; }
+    .detail-body { padding: 14px; }
+    .detail-kicker { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .05em; }
+    .detail h2 { margin-top: 5px; font: 700 21px/1.35 var(--font-display); }
+    .detail-summary { margin: 8px 0 0; color: var(--muted); }
+    .factor-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 14px; border-block: 1px solid var(--border); }
+    .factor { padding: 9px 0; border-bottom: 1px solid var(--border); }
+    .factor:nth-child(odd) { padding-right: 10px; border-right: 1px solid var(--border); }
+    .factor:nth-child(even) { padding-left: 10px; }
+    .factor:nth-last-child(-n+2) { border-bottom: 0; }
+    .factor-label { color: var(--muted); font-size: 11px; }
+    .factor-value { margin-top: 2px; font: 700 15px/1.35 var(--font-mono); }
+    .reason { margin-top: 12px; font-size: 13px; }
+    .reason strong { display: block; margin-bottom: 3px; }
+    .candidate-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 14px; }
+    .candidate-actions .button { min-width: 0; padding-inline: 7px; font-size: 12px; }
+    .candidate-actions .button[aria-pressed="true"] { border-color: var(--accent); color: #fff; background: var(--accent); }
+    .evidence-section { padding: 0 14px 14px; border-top: 1px solid var(--border); }
+    .evidence-section h3 { margin: 13px 0 8px; font-size: 14px; }
+    .evidence-item { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 9px; padding: 9px 0; border-top: 1px solid var(--border); }
+    .evidence-item:first-of-type { border-top: 0; }
+    .evidence-time { color: var(--muted); font: 11px/1.45 var(--font-mono); }
+    .evidence-speaker { color: var(--accent); font-weight: 700; }
+    .evidence-text { margin-top: 2px; font-size: 13px; overflow-wrap: anywhere; }
+    .boundary-list { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 12px; }
+    .runtime-error { margin: 20px; padding: 16px; border: 1px solid #f4b4ae; color: var(--danger); background: #fff1f0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (max-width: 1080px) {
+      .charts, .review-area { grid-template-columns: 1fr; }
+      .detail { position: static; }
+    }
+    @media (max-width: 760px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .sidebar { position: static; min-height: auto; padding: 12px; }
+      .brand { padding-bottom: 10px; }
+      .sidebar nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+      .nav-label, .local-note { display: none; }
+      .main { padding: 14px; }
+      .page-header { display: block; }
+      .header-actions { margin-top: 12px; }
+      .toolbar { align-items: stretch; }
+      .toolbar .field { flex: 1 1 44%; }
+      .toolbar-status { width: 100%; margin-left: 0; }
+      .metric-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 430px) {
+      .main { padding: 10px; }
+      .page-header { margin-bottom: 12px; }
+      .header-actions { display: grid; grid-template-columns: 1fr; }
+      .toolbar .field { flex-basis: 100%; }
+      .toolbar .button { width: 100%; }
+      .metric-row { grid-template-columns: 1fr; }
+      .metric { border-right: 0; border-bottom: 1px solid var(--border); }
+      .metric:last-child { border-bottom: 0; }
+      .charts { grid-template-columns: minmax(0, 1fr); }
+      .chart-wrap { min-height: 220px; padding-inline: 2px; }
+      .chart-wrap svg { height: 215px; }
+      .panel-head { display: block; }
+      .legend { justify-content: flex-start; margin-top: 8px; }
+      .insight-row { grid-template-columns: 6px minmax(0, 1fr); }
+      .candidate-label { grid-column: 2; }
+      .candidate-actions { grid-template-columns: 1fr; }
+      .factor-grid { grid-template-columns: 1fr; }
+      .factor, .factor:nth-child(odd), .factor:nth-child(even) { padding: 9px 0; border-right: 0; border-bottom: 1px solid var(--border); }
+      .factor:last-child { border-bottom: 0; }
+      .evidence-item { grid-template-columns: 1fr; gap: 2px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell" id="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">聊</div>
+        <div><div class="brand-title">群聊重要信息雷达</div><div class="brand-subtitle">证据驱动的筛选工作台</div></div>
+      </div>
+      <nav aria-label="工作台导航">
+        <button class="nav-item" aria-current="page" type="button">时间与趋势</button>
+        <button class="nav-item" type="button" data-jump="review">重点线索 <span class="nav-count" id="nav-insight-count">0</span></button>
+        <button class="nav-item" type="button" data-candidate-filter="insight">洞察候选 <span class="nav-count" id="nav-report-count">0</span></button>
+        <button class="nav-item" type="button" data-candidate-filter="qa">Q&amp;A 候选 <span class="nav-count" id="nav-qa-count">0</span></button>
+      </nav>
+      <div class="local-note"><strong>本地私有页面</strong>证据片段已匿名化；不要把此页面直接发布到群内或公开网络。</div>
+    </aside>
+
+    <main class="main">
+      <header class="page-header">
+        <div>
+          <div class="eyebrow">LOCAL EVIDENCE DESK</div>
+          <h1 id="page-title">群聊重要信息雷达</h1>
+          <p class="lead">先按日期观察变化，再判断哪些线索值得进入洞察报告或高频 Q&amp;A。</p>
+        </div>
+        <div class="header-actions">
+          <button class="button" id="export-decisions" type="button">导出候选标记</button>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="日期筛选">
+        <label class="field">开始日期<input id="start-date" type="date"></label>
+        <label class="field">结束日期<input id="end-date" type="date"></label>
+        <button class="button" id="reset-range" type="button">全部日期</button>
+        <div class="toolbar-status" id="range-status" aria-live="polite"></div>
+      </section>
+
+      <section class="metric-row" aria-label="所选范围统计" aria-live="polite">
+        <div class="metric"><div class="metric-label">有效消息</div><div class="metric-value" id="metric-messages">—</div><div class="metric-note" id="metric-message-note"></div></div>
+        <div class="metric"><div class="metric-label">疑问式消息</div><div class="metric-value" id="metric-questions">—</div><div class="metric-note" id="metric-question-note"></div></div>
+        <div class="metric"><div class="metric-label" id="metric-speaker-label">活跃发言者</div><div class="metric-value" id="metric-speakers">—</div><div class="metric-note" id="metric-speaker-note"></div></div>
+        <div class="metric"><div class="metric-label">前五位集中度</div><div class="metric-value" id="metric-concentration">—</div><div class="metric-note">这是解读偏差提示，不等于群体共识</div></div>
+      </section>
+
+      <div class="boundary-banner" id="media-boundary" hidden></div>
+
+      <section class="charts" aria-label="每日趋势图">
+        <article class="panel">
+          <div class="panel-head"><div><h2>每日消息与疑问趋势</h2><div class="panel-subtitle">左轴为有效消息，右轴为疑问式消息</div></div><div class="legend"><span><i class="swatch" style="--swatch:var(--accent)"></i>消息</span><span><i class="swatch dot" style="--swatch:var(--accent-2)"></i>疑问</span></div></div>
+          <div class="chart-wrap"><svg id="activity-chart" role="img" aria-labelledby="activity-title activity-desc"><title id="activity-title">每日消息与疑问趋势</title><desc id="activity-desc">显示所选日期范围内每天的有效消息量与疑问式消息量。</desc></svg><div class="chart-tooltip" id="activity-tooltip" hidden></div></div>
+        </article>
+        <article class="panel">
+          <div class="panel-head"><div><h2>每日主题趋势</h2><div class="panel-subtitle">自动展示当前范围内计数最高的四个主题</div></div><div class="legend" id="topic-legend"></div></div>
+          <div class="chart-wrap"><svg id="topic-chart" role="img" aria-labelledby="topic-title topic-desc"><title id="topic-title">每日主题趋势</title><desc id="topic-desc">显示主要主题在所选日期范围内的每日变化。</desc></svg><div class="chart-tooltip" id="topic-tooltip" hidden></div></div>
+        </article>
+      </section>
+
+      <section class="review-area" id="review">
+        <article class="panel">
+          <div class="panel-head"><div><h2>可解释的重点线索</h2><div class="panel-subtitle">按重复、跨人、跨日、未解决程度和可行动性排序</div></div><div class="nav-count" id="visible-insight-count">0 条</div></div>
+          <div class="list-controls">
+            <label class="field">类型<select id="kind-filter"><option value="all">全部类型</option><option value="question">重复问题</option><option value="method">方法</option><option value="case">案例</option><option value="risk">风险</option><option value="resource">资源</option><option value="trend">趋势</option><option value="decision">决策</option></select></label>
+            <label class="field">重要性<select id="importance-filter"><option value="all">全部级别</option><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select></label>
+            <label class="field">候选标记<select id="candidate-filter"><option value="all">全部状态</option><option value="none">未标记</option><option value="insight">洞察候选</option><option value="qa">Q&amp;A 候选</option></select></label>
+          </div>
+          <div class="insight-list" id="insight-list"></div>
+        </article>
+
+        <aside class="panel detail" aria-label="线索详情">
+          <div class="detail-body" id="detail-body"></div>
+          <div class="evidence-section" id="evidence-section"></div>
+        </aside>
+      </section>
+      <div class="runtime-error" id="runtime-error" role="alert" hidden></div>
+    </main>
+  </div>
+
+  <script id="dashboard-data" type="application/json">__GROUP_INSIGHT_DASHBOARD_DATA__</script>
+  <script>
+    (() => {
+      const COLORS = ['#315ee7', '#c45122', '#157a55', '#7a4db3'];
+      const KIND_LABELS = {question:'重复问题', method:'方法', case:'案例', risk:'风险', resource:'资源', trend:'趋势', decision:'决策'};
+      const IMPORTANCE_LABELS = {high:'高', medium:'中', low:'低'};
+      const CANDIDATE_LABELS = {none:'未标记', insight:'洞察候选', qa:'Q&A 候选'};
+      const CANDIDATE_COLORS = {none:'var(--muted)', insight:'var(--accent)', qa:'var(--success)'};
+      const RAIL_COLORS = {high:'var(--danger)', medium:'var(--warning)', low:'var(--border)'};
+      const app = document.getElementById('app');
+      let data;
+      try {
+        data = JSON.parse(document.getElementById('dashboard-data').textContent);
+      } catch (error) {
+        showError(`页面数据无法读取：${error.message}`);
+        return;
+      }
+
+      const storageKey = `group-insight-decisions:${data.group}`;
+      const state = {
+        start: data.daily[0]?.date || '',
+        end: data.daily[data.daily.length - 1]?.date || '',
+        kind: 'all',
+        importance: 'all',
+        candidate: 'all',
+        selectedId: data.insights[0]?.id || '',
+        topicVisibility: {},
+        decisions: loadDecisions()
+      };
+
+      function showError(message) {
+        const node = document.getElementById('runtime-error');
+        node.hidden = false;
+        node.textContent = message;
+      }
+      function esc(value) {
+        return String(value ?? '').replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
+      }
+      function number(value) { return new Intl.NumberFormat('zh-CN').format(value || 0); }
+      function percent(value) { return `${((value || 0) * 100).toFixed(1)}%`; }
+      function loadDecisions() {
+        try { return JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { return {}; }
+      }
+      function saveDecisions() {
+        try { localStorage.setItem(storageKey, JSON.stringify(state.decisions)); } catch {}
+      }
+      function candidateOf(insight) { return state.decisions[insight.id] || insight.candidate || 'none'; }
+      function inRange(date) { return (!state.start || date >= state.start) && (!state.end || date <= state.end); }
+      function selectedDays() { return data.daily.filter(day => inRange(day.date)); }
+      function dateOverlap(insight) { return !insight.dates.length || insight.dates.some(inRange); }
+      function visibleInsights() {
+        return data.insights.filter(insight => dateOverlap(insight)
+          && (state.kind === 'all' || insight.kind === state.kind)
+          && (state.importance === 'all' || insight.importance === state.importance)
+          && (state.candidate === 'all' || candidateOf(insight) === state.candidate));
+      }
+
+      function renderHeader() {
+        document.title = `${data.group}｜群聊重要信息雷达`;
+        document.getElementById('page-title').textContent = `${data.group}｜重要信息雷达`;
+        const start = document.getElementById('start-date');
+        const end = document.getElementById('end-date');
+        start.value = state.start;
+        end.value = state.end;
+        start.min = end.min = data.daily[0]?.date || '';
+        start.max = end.max = data.daily[data.daily.length - 1]?.date || '';
+        document.getElementById('range-status').textContent = `${state.start || '最早'} 至 ${state.end || '最新'} · 统计来自本地证据包`;
+        const media = data.media;
+        const banner = document.getElementById('media-boundary');
+        banner.hidden = !media.coverageWarning;
+        if (media.coverageWarning) banner.innerHTML = `<strong>媒体证据缺口</strong><span>语音记录 ${number(media.voiceRecords)} 条，实际语音文件 ${number(media.voiceFiles)} 个；未处理到的语音不能作为结论依据。</span>`;
+      }
+
+      function renderMetrics() {
+        const days = selectedDays();
+        const messages = days.reduce((sum, day) => sum + day.messages, 0);
+        const questions = days.reduce((sum, day) => sum + day.questions, 0);
+        const fullRange = days.length === data.daily.length;
+        const singleDay = days.length === 1;
+        const speakers = singleDay ? days[0].speakers : fullRange ? data.summary.speakers : Math.round(days.reduce((sum, day) => sum + day.speakers, 0) / Math.max(days.length, 1));
+        document.getElementById('metric-messages').textContent = number(messages);
+        document.getElementById('metric-questions').textContent = number(questions);
+        document.getElementById('metric-question-note').textContent = messages ? `占有效消息 ${(questions / messages * 100).toFixed(1)}%` : '当前范围无消息';
+        document.getElementById('metric-speaker-label').textContent = singleDay || fullRange ? '活跃发言者' : '日均活跃发言者';
+        document.getElementById('metric-speakers').textContent = number(speakers);
+        document.getElementById('metric-speaker-note').textContent = singleDay ? days[0].date : fullRange ? '所选完整分析区间' : '跨日成员不做简单累加';
+        document.getElementById('metric-concentration').textContent = percent(data.summary.topFiveShare);
+        document.getElementById('metric-message-note').textContent = `${days.length} 个有消息的日期`;
+      }
+
+      function svgEl(tag, attrs = {}, content = '') {
+        const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+        if (content) node.textContent = content;
+        return node;
+      }
+      function ticks(maximum, count = 4) {
+        if (!maximum) return [0];
+        const rough = maximum / count;
+        const magnitude = 10 ** Math.floor(Math.log10(rough));
+        const residual = rough / magnitude;
+        const step = (residual >= 5 ? 10 : residual >= 2 ? 5 : residual >= 1 ? 2 : 1) * magnitude;
+        const top = Math.ceil(maximum / step) * step;
+        const values = [];
+        for (let value = 0; value <= top; value += step) values.push(value);
+        return values;
+      }
+      function positionTooltip(tooltip, event, wrap, html) {
+        const rect = wrap.getBoundingClientRect();
+        tooltip.innerHTML = html;
+        tooltip.hidden = false;
+        tooltip.style.left = `${Math.max(70, Math.min(rect.width - 70, event.clientX - rect.left))}px`;
+        tooltip.style.top = `${Math.max(52, event.clientY - rect.top)}px`;
+      }
+
+      function renderActivityChart() {
+        const svg = document.getElementById('activity-chart');
+        const wrap = svg.parentElement;
+        const tooltip = document.getElementById('activity-tooltip');
+        const days = selectedDays();
+        const width = Math.max(300, Math.floor(wrap.clientWidth - 16));
+        const height = 245;
+        const margin = {top: 16, right: 46, bottom: 42, left: 50};
+        const innerW = width - margin.left - margin.right;
+        const innerH = height - margin.top - margin.bottom;
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        svg.replaceChildren(svgEl('title', {id:'activity-title'}, '每日消息与疑问趋势'), svgEl('desc', {id:'activity-desc'}, '显示所选日期范围内每天的有效消息量与疑问式消息量。'));
+        if (!days.length) return;
+        const messageTicks = ticks(Math.max(...days.map(day => day.messages)));
+        const questionTicks = ticks(Math.max(...days.map(day => day.questions)));
+        const messageMax = messageTicks[messageTicks.length - 1] || 1;
+        const questionMax = questionTicks[questionTicks.length - 1] || 1;
+        const step = innerW / days.length;
+        const barW = Math.max(2, Math.min(22, step * .58));
+        const x = index => margin.left + step * index + step / 2;
+        const yMessage = value => margin.top + innerH - value / messageMax * innerH;
+        const yQuestion = value => margin.top + innerH - value / questionMax * innerH;
+        svg.appendChild(svgEl('rect', {x:margin.left, y:margin.top, width:innerW, height:innerH, class:'chart-frame'}));
+        messageTicks.forEach(value => {
+          const y = yMessage(value);
+          svg.appendChild(svgEl('line', {x1:margin.left, x2:margin.left + innerW, y1:y, y2:y, class:'grid-line'}));
+          svg.appendChild(svgEl('text', {x:margin.left - 8, y:y + 4, 'text-anchor':'end', class:'axis-text'}, String(value)));
+        });
+        questionTicks.forEach(value => svg.appendChild(svgEl('text', {x:margin.left + innerW + 8, y:yQuestion(value) + 4, class:'axis-text'}, String(value))));
+        const labelEvery = Math.max(1, Math.ceil(days.length / (width < 480 ? 4 : 7)));
+        days.forEach((day, index) => {
+          const bar = svgEl('rect', {x:x(index) - barW / 2, y:yMessage(day.messages), width:barW, height:Math.max(1, margin.top + innerH - yMessage(day.messages)), class:'message-bar'});
+          bar.addEventListener('mousemove', event => positionTooltip(tooltip, event, wrap, `<strong>${esc(day.date)}</strong><br>消息 ${number(day.messages)} · 疑问 ${number(day.questions)} · 发言者 ${number(day.speakers)}`));
+          bar.addEventListener('mouseleave', () => { tooltip.hidden = true; });
+          svg.appendChild(bar);
+          const nearForcedLast = index !== days.length - 1 && days.length - 1 - index < Math.ceil(labelEvery / 2);
+          if ((index % labelEvery === 0 && !nearForcedLast) || index === days.length - 1) svg.appendChild(svgEl('text', {x:x(index), y:height - 17, 'text-anchor':'middle', class:'axis-text'}, day.date.slice(5)));
+        });
+        const points = days.map((day, index) => `${x(index)},${yQuestion(day.questions)}`).join(' ');
+        svg.appendChild(svgEl('polyline', {points, class:'question-line'}));
+        days.forEach((day, index) => {
+          const dot = svgEl('circle', {cx:x(index), cy:yQuestion(day.questions), r:3.7, class:'question-dot'});
+          dot.addEventListener('mousemove', event => positionTooltip(tooltip, event, wrap, `<strong>${esc(day.date)}</strong><br>疑问 ${number(day.questions)} · 消息 ${number(day.messages)}`));
+          dot.addEventListener('mouseleave', () => { tooltip.hidden = true; });
+          svg.appendChild(dot);
+        });
+        svg.appendChild(svgEl('text', {x:14, y:margin.top + innerH / 2, transform:`rotate(-90 14 ${margin.top + innerH / 2})`, 'text-anchor':'middle', class:'axis-title'}, '有效消息（条）'));
+        svg.appendChild(svgEl('text', {x:width - 10, y:margin.top + innerH / 2, transform:`rotate(90 ${width - 10} ${margin.top + innerH / 2})`, 'text-anchor':'middle', class:'axis-title'}, '疑问式消息（条）'));
+      }
+
+      function topTopics(days) {
+        const totals = new Map();
+        days.forEach(day => day.topics.forEach(([topic, value]) => totals.set(topic, (totals.get(topic) || 0) + value)));
+        return [...totals].sort((a, b) => b[1] - a[1]).slice(0, 4).map(([topic]) => topic);
+      }
+      function renderTopicChart() {
+        const svg = document.getElementById('topic-chart');
+        const wrap = svg.parentElement;
+        const tooltip = document.getElementById('topic-tooltip');
+        const days = selectedDays();
+        const topics = topTopics(days);
+        topics.forEach(topic => { if (!(topic in state.topicVisibility)) state.topicVisibility[topic] = true; });
+        const legend = document.getElementById('topic-legend');
+        legend.innerHTML = topics.map((topic, index) => `<button type="button" class="legend-button" data-topic="${esc(topic)}" aria-pressed="${state.topicVisibility[topic] !== false}"><i class="swatch" style="--swatch:${COLORS[index]}"></i>${esc(topic)}</button>`).join('');
+        legend.querySelectorAll('button').forEach(button => button.addEventListener('click', () => { state.topicVisibility[button.dataset.topic] = button.getAttribute('aria-pressed') !== 'true'; renderTopicChart(); }));
+        const width = Math.max(300, Math.floor(wrap.clientWidth - 16));
+        const height = 245;
+        const margin = {top: 16, right: 16, bottom: 42, left: 48};
+        const innerW = width - margin.left - margin.right;
+        const innerH = height - margin.top - margin.bottom;
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        svg.replaceChildren(svgEl('title', {id:'topic-title'}, '每日主题趋势'), svgEl('desc', {id:'topic-desc'}, '显示主要主题在所选日期范围内的每日变化。'));
+        if (!days.length || !topics.length) return;
+        const series = topics.map(topic => ({topic, values:days.map(day => Object.fromEntries(day.topics)[topic] || 0)}));
+        const maximum = Math.max(1, ...series.flatMap(item => item.values));
+        const yTicks = ticks(maximum);
+        const yMax = yTicks[yTicks.length - 1] || 1;
+        const x = index => margin.left + (days.length === 1 ? innerW / 2 : innerW * index / (days.length - 1));
+        const y = value => margin.top + innerH - value / yMax * innerH;
+        svg.appendChild(svgEl('rect', {x:margin.left, y:margin.top, width:innerW, height:innerH, class:'chart-frame'}));
+        yTicks.forEach(value => {
+          const py = y(value);
+          svg.appendChild(svgEl('line', {x1:margin.left, x2:margin.left + innerW, y1:py, y2:py, class:'grid-line'}));
+          svg.appendChild(svgEl('text', {x:margin.left - 8, y:py + 4, 'text-anchor':'end', class:'axis-text'}, String(value)));
+        });
+        const labelEvery = Math.max(1, Math.ceil(days.length / (width < 480 ? 4 : 6)));
+        days.forEach((day, index) => {
+          const nearForcedLast = index !== days.length - 1 && days.length - 1 - index < Math.ceil(labelEvery / 2);
+          if ((index % labelEvery === 0 && !nearForcedLast) || index === days.length - 1) svg.appendChild(svgEl('text', {x:x(index), y:height - 17, 'text-anchor':'middle', class:'axis-text'}, day.date.slice(5)));
+        });
+        series.forEach((item, seriesIndex) => {
+          if (state.topicVisibility[item.topic] === false) return;
+          const points = item.values.map((value, index) => `${x(index)},${y(value)}`).join(' ');
+          svg.appendChild(svgEl('polyline', {points, class:'topic-line', stroke:COLORS[seriesIndex]}));
+          item.values.forEach((value, index) => {
+            const dot = svgEl('circle', {cx:x(index), cy:y(value), r:3.5, class:'topic-dot', fill:COLORS[seriesIndex]});
+            dot.addEventListener('mousemove', event => positionTooltip(tooltip, event, wrap, `<strong>${esc(item.topic)}</strong><br>${esc(days[index].date)} · ${number(value)} 条`));
+            dot.addEventListener('mouseleave', () => { tooltip.hidden = true; });
+            svg.appendChild(dot);
+          });
+        });
+        svg.appendChild(svgEl('text', {x:14, y:margin.top + innerH / 2, transform:`rotate(-90 14 ${margin.top + innerH / 2})`, 'text-anchor':'middle', class:'axis-title'}, '主题命中（条）'));
+      }
+
+      function renderCounts() {
+        document.getElementById('nav-insight-count').textContent = data.insights.length;
+        document.getElementById('nav-report-count').textContent = data.insights.filter(item => candidateOf(item) === 'insight').length;
+        document.getElementById('nav-qa-count').textContent = data.insights.filter(item => candidateOf(item) === 'qa').length;
+      }
+      function renderList() {
+        const items = visibleInsights();
+        const list = document.getElementById('insight-list');
+        document.getElementById('visible-insight-count').textContent = `${items.length} 条`;
+        if (!items.some(item => item.id === state.selectedId)) state.selectedId = items[0]?.id || '';
+        if (!items.length) {
+          list.innerHTML = '<div class="empty-state">当前日期和筛选条件下，没有符合要求的重点线索。</div>';
+          renderDetail();
+          return;
+        }
+        list.innerHTML = items.map(insight => {
+          const candidate = candidateOf(insight);
+          const factors = insight.factors;
+          const meta = [`${KIND_LABELS[insight.kind]}`, `${IMPORTANCE_LABELS[insight.importance]}重要性`, `${factors.repeatCount} 次重复`, `${factors.speakerCount} 位成员`, `${factors.crossDayCount} 天`];
+          return `<button type="button" class="insight-row" data-id="${esc(insight.id)}" aria-selected="${insight.id === state.selectedId}"><span class="importance-rail" style="--rail:${RAIL_COLORS[insight.importance]}"></span><span><span class="insight-title">${esc(insight.title)}</span><span class="insight-summary">${esc(insight.summary || '暂无摘要')}</span><span class="insight-meta">${meta.map(value => `<span>${esc(value)}</span>`).join('')}</span></span><span class="candidate-label" style="--candidate-color:${CANDIDATE_COLORS[candidate]}">${CANDIDATE_LABELS[candidate]}</span></button>`;
+        }).join('');
+        list.querySelectorAll('.insight-row').forEach(button => button.addEventListener('click', () => { state.selectedId = button.dataset.id; renderList(); renderDetail(); }));
+        renderDetail();
+      }
+      function renderDetail() {
+        const insight = data.insights.find(item => item.id === state.selectedId);
+        const body = document.getElementById('detail-body');
+        const evidenceSection = document.getElementById('evidence-section');
+        if (!insight) {
+          body.innerHTML = '<div class="empty-state">选择一条线索查看重要性依据。</div>';
+          evidenceSection.innerHTML = '';
+          return;
+        }
+        const candidate = candidateOf(insight);
+        const factors = insight.factors;
+        body.innerHTML = `<div class="detail-kicker">${esc(KIND_LABELS[insight.kind])} · ${esc(IMPORTANCE_LABELS[insight.importance])}重要性</div><h2>${esc(insight.title)}</h2><p class="detail-summary">${esc(insight.summary || '暂无摘要')}</p><div class="factor-grid"><div class="factor"><div class="factor-label">重复信号</div><div class="factor-value">${number(factors.repeatCount)} 次</div></div><div class="factor"><div class="factor-label">涉及成员</div><div class="factor-value">${number(factors.speakerCount)} 位</div></div><div class="factor"><div class="factor-label">跨日持续</div><div class="factor-value">${number(factors.crossDayCount)} 天</div></div><div class="factor"><div class="factor-label">当前状态</div><div class="factor-value">${esc(insight.status)}</div></div></div><div class="reason"><strong>为什么重要</strong>${esc(factors.reason || '需要结合重复度、影响范围与可行动性进一步判断。')}</div><div class="reason"><strong>建议动作</strong>${esc(insight.action || '暂未指定动作')}</div><div class="candidate-actions" aria-label="候选标记"><button type="button" class="button" data-mark="insight" aria-pressed="${candidate === 'insight'}">洞察候选</button><button type="button" class="button" data-mark="qa" aria-pressed="${candidate === 'qa'}">Q&amp;A 候选</button><button type="button" class="button" data-mark="none" aria-pressed="${candidate === 'none'}">清除标记</button></div>`;
+        body.querySelectorAll('[data-mark]').forEach(button => button.addEventListener('click', () => { state.decisions[insight.id] = button.dataset.mark; saveDecisions(); renderCounts(); renderList(); }));
+        const inRangeEvidence = insight.evidence.filter(item => !item.date || inRange(item.date));
+        const evidence = inRangeEvidence.length ? inRangeEvidence : insight.evidence;
+        const evidenceHtml = evidence.length ? evidence.map(item => `<div class="evidence-item"><div class="evidence-time">${esc(item.ref)}<br>${esc(item.time)}</div><div><div class="evidence-speaker">${esc(item.speaker)}</div><div class="evidence-text">${esc(item.text)}</div></div></div>`).join('') : '<div class="empty-state">当前线索没有可回查的匿名证据片段。</div>';
+        const boundaries = [...insight.boundaries];
+        if (data.media.coverageWarning) boundaries.push(`语音记录 ${data.media.voiceRecords} 条、文件 ${data.media.voiceFiles} 个，语音证据不完整`);
+        evidenceSection.innerHTML = `<h3>匿名证据链 · ${evidence.length}/${insight.evidence.length}</h3>${evidenceHtml}${boundaries.length ? `<h3>证据缺口与边界</h3><ul class="boundary-list">${boundaries.map(item => `<li>${esc(item)}</li>`).join('')}</ul>` : ''}`;
+      }
+
+      function renderAll() {
+        renderHeader();
+        renderMetrics();
+        renderCounts();
+        renderActivityChart();
+        renderTopicChart();
+        renderList();
+      }
+
+      document.getElementById('start-date').addEventListener('change', event => {
+        state.start = event.target.value;
+        if (state.end && state.start > state.end) state.end = state.start;
+        renderAll();
+      });
+      document.getElementById('end-date').addEventListener('change', event => {
+        state.end = event.target.value;
+        if (state.start && state.end < state.start) state.start = state.end;
+        renderAll();
+      });
+      document.getElementById('reset-range').addEventListener('click', () => {
+        state.start = data.daily[0]?.date || '';
+        state.end = data.daily[data.daily.length - 1]?.date || '';
+        renderAll();
+      });
+      document.getElementById('kind-filter').addEventListener('change', event => { state.kind = event.target.value; renderList(); });
+      document.getElementById('importance-filter').addEventListener('change', event => { state.importance = event.target.value; renderList(); });
+      document.getElementById('candidate-filter').addEventListener('change', event => { state.candidate = event.target.value; renderList(); });
+      document.querySelectorAll('[data-jump]').forEach(button => button.addEventListener('click', () => document.getElementById(button.dataset.jump).scrollIntoView({behavior:'smooth'})));
+      document.querySelectorAll('[data-candidate-filter]').forEach(button => button.addEventListener('click', () => {
+        state.candidate = button.dataset.candidateFilter;
+        document.getElementById('candidate-filter').value = state.candidate;
+        renderList();
+        document.getElementById('review').scrollIntoView({behavior:'smooth'});
+      }));
+      document.getElementById('export-decisions').addEventListener('click', () => {
+        const payload = {group:data.group, generatedAt:new Date().toISOString(), decisions:data.insights.map(item => ({id:item.id, candidate:candidateOf(item)}))};
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = 'review_decisions.json';
+        anchor.click();
+        URL.revokeObjectURL(url);
+      });
+
+      let resizeTimer;
+      new ResizeObserver(() => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => { renderActivityChart(); renderTopicChart(); }, 120);
+      }).observe(document.querySelector('.charts'));
+      renderAll();
+    })();
+  </script>
+</body>
+</html>

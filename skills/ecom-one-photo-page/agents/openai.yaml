@@ -1,0 +1,4 @@
+interface:
+  display_name: 一张产品图做商品页
+  short_description: 从一张产品照片建立 SKU 与数量约束，交付六张主图和详情页方案、独立提示词及产品一致性检查。
+  default_prompt: 使用 $ecom-one-photo-page。用这张产品图规划主图和详情页，先交方案及提示词，缺少证据的结构和功效保持待核实。

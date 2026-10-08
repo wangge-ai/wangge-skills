@@ -1,0 +1,4 @@
+interface:
+  display_name: 自然中文写作与改稿
+  short_description: 按现实与虚构边界组织中文长文、教程、故事和口播，并提供语体与重复表达检查。
+  default_prompt: 使用 $human-writing。根据这些材料写一篇自然中文文章，保留具体动作和事实，材料不足时缩小题目，不虚构亲历。

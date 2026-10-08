@@ -1,0 +1,4 @@
+interface:
+  display_name: 商品图片与详情素材采集
+  short_description: 从商品链接或保存的 HTML 采集主图、详情图和证明素材，保留来源与失败状态。
+  default_prompt: 使用 $ecom-product-assets-collector。整理这份保存的商品 HTML 及同目录素材，分别保存主图和详情图，并列出缺失部分。

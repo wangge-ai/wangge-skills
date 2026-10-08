@@ -1,0 +1,4 @@
+interface:
+  display_name: 商品页定位与策划
+  short_description: 从商品事实、竞品表达、关键词和反馈策划定位、卖点、1+5 主图序列及详情页。
+  default_prompt: 使用 $ecom-page-planner。根据这些商品事实和参考资料，策划六张主图及详情页，每个卖点说明证据与缺口。

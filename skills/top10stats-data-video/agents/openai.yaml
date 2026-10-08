@@ -1,0 +1,4 @@
+interface:
+  display_name: 数据动态排行视频
+  short_description: 把热点映射到可核验的数据来源与视频形态，清洗数据并制作排行、分镜、封面及 MP4。
+  default_prompt: 使用 $top10stats-data-video。根据这份有来源和单位的数据规划动态排行视频，核对同口径后再制作，未实际渲染时仅交方案。

@@ -1,0 +1,4 @@
+interface:
+  display_name: 公众号标题策划
+  short_description: 按读者任务、文章证据和推荐场景生成、比较及评分标题，避免无法兑现的数字和结果。
+  default_prompt: 使用 $gzh-title-strategist。给这篇文章设计不同路线的公众号标题，所有数字和结果都必须能在正文找到证据。

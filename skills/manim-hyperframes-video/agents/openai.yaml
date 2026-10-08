@@ -1,0 +1,4 @@
+interface:
+  display_name: 技术讲解动画
+  short_description: 用 Manim 处理公式和系统逻辑，用 HyperFrames 组织时间线、字幕及混合素材。
+  default_prompt: 使用 $manim-hyperframes-video。把这个技术概念拆成动画分镜，确定哪些画面用 Manim，哪些用时间线合成，并给验片要点。

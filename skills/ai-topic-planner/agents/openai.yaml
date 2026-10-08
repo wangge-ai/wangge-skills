@@ -1,0 +1,4 @@
+interface:
+  display_name: AI 热点选题
+  short_description: 从热点来源发现、去重并核验事件，按实际价值、证据与制作成本生成选题简报。
+  default_prompt: 使用 $ai-topic-planner。从这些近期 AI 新闻链接筛选适合实操教程的选题，核验事件日期及一手来源并指出证据缺口。

@@ -1,0 +1,4 @@
+interface:
+  display_name: 排行与搜索主图采集
+  short_description: 从公开榜单、保存页面或导出的商品卡片整理主图样本、位置、来源、联系表和报告。
+  default_prompt: 使用 $ecom-ranking-main-image-collector。从这份导出商品卡片中整理主图样本，区分广告和自然位，标明排序口径并生成报告。

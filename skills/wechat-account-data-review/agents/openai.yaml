@@ -1,0 +1,4 @@
+interface:
+  display_name: 公众号后台数据复盘
+  short_description: 合并公众号趋势与用户增长导出、文章档案，区分文章指标、每日信号和版式线索。
+  default_prompt: 使用 $wechat-account-data-review。复盘这些公众号后台导出和文章档案，缺失的文章阅读量保留未知，不将每日涨粉归因给某一篇。

@@ -1,0 +1,4 @@
+interface:
+  display_name: 证据型分析报告
+  short_description: 按决策任务选择监测、诊断、比较、预测等报告类型，审计资料、选择模型并检查结论边界。
+  default_prompt: 使用 $analysis-report-orchestrator。用这些表格和文档写分析报告，先说明决策目标、资料口径及缺失，再形成有证据的建议。

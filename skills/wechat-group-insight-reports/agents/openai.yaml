@@ -1,0 +1,4 @@
+interface:
+  display_name: 群聊需求与问答分析
+  short_description: 从群聊导出生成匿名洞察工作台、内部需求报告及高频问答，支持原文定位和增量更新。
+  default_prompt: 使用 $wechat-group-insight-reports。分析这份群聊导出，生成匿名本地看板、内部需求报告和隐私安全的高频问答。

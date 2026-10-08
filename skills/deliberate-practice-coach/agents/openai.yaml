@@ -1,0 +1,4 @@
+interface:
+  display_name: 刻意练习私教
+  short_description: 通过错误模拟、漏洞检测、反向教学与复盘，将学习目标转成可观察的互动练习。
+  default_prompt: 使用 $deliberate-practice-coach。围绕我想学的技能开始一轮练习，给任务和通过标准，等我作答后再诊断。

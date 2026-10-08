@@ -1,0 +1,5 @@
+interface:
+  display_name: 文档批量转 Markdown
+  short_description: 调用 MarkItDown 转换文档、表格及网页，支持批量输出、保留原稿与 PDF 中文断行清理。
+  default_prompt: 使用 $document-to-markdown。把这个文件夹的文档批量转换为 Markdown，保留原文件，并列出转换失败和需要
+    OCR 的文件。

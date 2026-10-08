@@ -1,0 +1,4 @@
+interface:
+  display_name: 跨平台资料采集编排
+  short_description: 发现并去重链接，组织可恢复采集、来源与资产记录，交付离线可读的资料合集。
+  default_prompt: 使用 $web-collection-orchestrator。整理这个页面中的资料链接，保留来源和失败原因，再汇总成可离线阅读的目录。

@@ -2,7 +2,7 @@
 
 2026-10-08 对照[飞书 Skill 资料库](https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH)当前表格：27 个有编号资料项，另有 3 个空行。资料包与 Skill 不是一对一：一包可含多个 Skill，也可能只有工作流、课件、素材或提示词。
 
-本仓库现收录 **18 个可安装 Skill**。以下按飞书原编号逐项对应；可机器读取的清单见 [article-packs.json](article-packs.json)。
+本仓库现收录 **40 个可安装 Skill**，其中新增 22 个来自本地维护工作流，不计入飞书资料项数量。以下按飞书原编号逐项对应；可机器读取的清单见 [article-packs.json](article-packs.json)。
 
 “已公开”表示方法包结构和引用经过检查；有脚本的新增包另跑最小样例。外部服务真实业务效果、MCP 与飞书账号流程没有在本次更新中复测。
 
@@ -15,7 +15,7 @@
 | 5 | [电商数据分析_Skill](https://mp.weixin.qq.com/s/y5j9a82NcpK7eeBZYXrAnA) | Skill类 | 已公开 | [ecommerce-competitor-analyzer](../skills/ecommerce-competitor-analyzer)、[external-skill-adapter](../skills/external-skill-adapter)；原创 Skill 方法、参考资料与所需脚本已整理。 |
 | 6 | [n8n内容流水线工作流](https://mp.weixin.qq.com/s/S5w2440BBXgkrJ9ZpBr2RA) | 工作流类 | 仅飞书 | n8n 工作流资料，不是独立 Skill。 |
 | 7 | [电商作图SOP素材包](https://mp.weixin.qq.com/s/e676DXGSJ_-RabQs4Kgdug) | 素材参考类 | 素材待核权属 | 保留历史素材入口，未直接转载图片。 |
-| 8 | [爆款主图采集分析工作流](https://mp.weixin.qq.com/s/6oITmLqQxPgRC5xAlQDJdw) | 工作流类 | 工作流待整理 | 当前为采集分析流程，尚未整理成可安装 Skill。 |
+| 8 | [爆款主图采集分析工作流](https://mp.weixin.qq.com/s/6oITmLqQxPgRC5xAlQDJdw) | 工作流类 | 对应方法已公开 | [ecom-ranking-main-image-collector](../skills/ecom-ranking-main-image-collector)；本地维护的采集方法，历史资料包和原图未整包转载。 |
 | 9 | [竞品蒸馏打法地图](https://mp.weixin.qq.com/s/lImqQ_q4gRi6YBFmjpqIMg) | 工作流类 | 工作流待整理 | 当前为竞品蒸馏方法资料，尚未整理成可安装 Skill。 |
 | 10 | [竞品拆解脚本工具包](https://mp.weixin.qq.com/s/LMfGoki3kx2k1ErZJU-Wxg) | 工具类 | 工具待验证 | 脚本工具资料，尚未完成可移植运行验证。 |
 | 11 | [飞书数据中台起步包](https://mp.weixin.qq.com/s/CRBmXBn1gX-fIDPqMTt2EQ) | 工具类 | 模板待整理 | 教程与数据中台起步模板，独立整理后再发布。 |

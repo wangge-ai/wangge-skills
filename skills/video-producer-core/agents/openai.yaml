@@ -1,0 +1,4 @@
+interface:
+  display_name: 视频制作总流程
+  short_description: 组织选题、脚本、分镜、素材、音频与渲染验证，连接不同视频工具。
+  default_prompt: 使用 $video-producer-core。为这个主题制作视频方案，先交脚本、分镜和素材表，说明音频与成片验证方法。
