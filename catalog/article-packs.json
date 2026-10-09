@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-08",
+  "updated": "2026-10-09",
   "library": "https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH",
   "packs": [
     {
@@ -18,11 +18,9 @@
       "name": "github高潜力发现_Skill",
       "category": "Skill类",
       "article": "https://mp.weixin.qq.com/s/KdS3fYBOMFTADwRVTLLw2A",
-      "status": "已公开",
-      "skills": [
-        "github-content-radar"
-      ],
-      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+      "status": "已移出公开仓库",
+      "skills": [],
+      "note": "2026-10-09 按用户要求移除内容选题与创作类 Skill；原飞书资料与文章入口保留。"
     },
     {
       "number": 3,
@@ -130,11 +128,9 @@
       "name": "工具教程生成_Skill",
       "category": "Skill类",
       "article": "https://mp.weixin.qq.com/s/wSZVr9HcvR4R0VY-PVfJZA",
-      "status": "已公开",
-      "skills": [
-        "beginner-tutorial-writer"
-      ],
-      "note": "原创 Skill 方法、参考资料与所需脚本已整理。"
+      "status": "已移出公开仓库",
+      "skills": [],
+      "note": "2026-10-09 按用户要求移除内容选题与创作类 Skill；原飞书资料与文章入口保留。"
     },
     {
       "number": 14,

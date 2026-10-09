@@ -1,4 +1,0 @@
-interface:
-  display_name: AI 与数据分析教学设计
-  short_description: 设计大学生 AI 与 Excel、SQL、Python、BI 能力路径、任务训练和学习效果证据。
-  default_prompt: 使用 $ai-data-training-program-planner。设计 AI 与数据分析课程的能力成长路径，说明任务、错误训练、作品标准和学生进步证据。

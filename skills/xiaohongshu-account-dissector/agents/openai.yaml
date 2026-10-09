@@ -1,4 +1,0 @@
-interface:
-  display_name: 小红书账号拆解
-  short_description: 用账号页、笔记截图或导出分析定位、内容货架、封面标题、信任和转化路径。
-  default_prompt: 使用 $xiaohongshu-account-dissector。拆解这些账号截图和代表笔记，分别标明可见事实、机制假设和适合我借鉴的结构。

@@ -1,14 +1,14 @@
 # 旺哥 Skills
 
-来自实际工作资料的 AI Skill：电商、数据分析、内容、研究与协作。
+来自实际工作资料的 AI Skill：电商、数据分析、资料采集、研究、自动化与视频制作。
 
-**当前可安装：40 个 Skill。** 2026-10-08 先对照飞书资料库补齐 11 个，再整理本地工作流新增 22 个，保留原有 7 个。每个包都包含 `SKILL.md`、README、许可证及 Agent 配置，所需脚本和参考资料随包提供。
+**当前可安装：30 个 Skill。** 按任务收录完整方法包，每个包都包含 `SKILL.md`、README、许可证及 Agent 配置，所需脚本和参考资料随包提供。
 
 [飞书资料库](https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH)当前有 27 个有编号资料项；全部对应关系与尚未公开原因见[文章资料包目录](catalog/article-packs.md)。资料包包含课件、素材和工具，所以数量与可安装 Skill 数量不同。
 
 ## 选择 Skill
 
-按任务分为 8 类，共 40 个完整包。安装时保留对应目录中的全部文件。
+按任务分为 6 类，共 30 个完整包。安装时保留对应目录中的全部文件。
 
 ### 电商视觉与商品页（4）
 
@@ -29,19 +29,6 @@
 | [ecommerce-review-analysis](skills/ecommerce-review-analysis) | 按数据质量、清洗、分类、人群、归因、参照物与报告七步分析评论。 |
 | [kolsprite-tiktok-ops](skills/kolsprite-tiktok-ops) | 用已授权的达人精灵 MCP 做视频、商品、店铺与达人研究，输出可追溯运营方案。 |
 | [sellersprite-amazon-ops](skills/sellersprite-amazon-ops) | 用卖家精灵 MCP 做机会词扫描、竞品拆解、词库搭建和 Listing 方案。 |
-
-### 内容选题与创作（8）
-
-| Skill | 用途 |
-|---|---|
-| [github-content-radar](skills/github-content-radar) | 发现、去重和筛选值得实测、分享或写成公众号文章的 GitHub 项目。 |
-| [beginner-tutorial-writer](skills/beginner-tutorial-writer) | 从产品名与官方资料生成可操作的新手教程，配搜索查询脚本和独立 HTML 渲染脚本。 |
-| [gzh-title-strategist](skills/gzh-title-strategist) | 按读者任务、文章证据和推荐场景生成、比较及评分标题，避免无法兑现的数字和结果。 |
-| [human-writing](skills/human-writing) | 按现实与虚构边界组织中文长文、教程、故事和口播，并提供语体与重复表达检查。 |
-| [wechat-to-xiaohongshu-rewriter](skills/wechat-to-xiaohongshu-rewriter) | 筛选长文、收束单一读者任务，制作逐页脚本、3:4 卡片及可上传发布包。 |
-| [xiaohongshu-account-dissector](skills/xiaohongshu-account-dissector) | 用账号页、笔记截图或导出分析定位、内容货架、封面标题、信任和转化路径。 |
-| [ai-topic-planner](skills/ai-topic-planner) | 从热点来源发现、去重并核验事件，按实际价值、证据与制作成本生成选题简报。 |
-| [wechat-cover-maker](skills/wechat-cover-maker) | 生成留白背景后本地排入准确中文标题，支持多张封面、尺寸与移动缩略图检查。 |
 
 ### 资料采集与知识整理（6）
 
@@ -82,13 +69,6 @@
 | [video-producer-core](skills/video-producer-core) | 组织选题、脚本、分镜、素材、音频与渲染验证，连接不同视频工具。 |
 | [manim-hyperframes-video](skills/manim-hyperframes-video) | 用 Manim 处理公式和系统逻辑，用 HyperFrames 组织时间线、字幕及混合素材。 |
 | [top10stats-data-video](skills/top10stats-data-video) | 把热点映射到可核验的数据来源与视频形态，清洗数据并制作排行、分镜、封面及 MP4。 |
-
-### 学习训练（2）
-
-| Skill | 用途 |
-|---|---|
-| [deliberate-practice-coach](skills/deliberate-practice-coach) | 通过错误模拟、漏洞检测、反向教学与复盘，将学习目标转成可观察的互动练习。 |
-| [ai-data-training-program-planner](skills/ai-data-training-program-planner) | 设计大学生 AI 与 Excel、SQL、Python、BI 能力路径、任务训练和学习效果证据。 |
 
 更完整的混合资料分析可使用独立仓库 [Data Lens](https://github.com/wangge-ai/data-lens)。
 

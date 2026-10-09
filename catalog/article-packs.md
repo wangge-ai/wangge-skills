@@ -2,14 +2,14 @@
 
 2026-10-08 对照[飞书 Skill 资料库](https://my.feishu.cn/wiki/DJMRwTyK2ifkkmk5FHPcZeP3nwc?table=tbl1SvuqTb3Vmeq4&view=vew95iuRuH)当前表格：27 个有编号资料项，另有 3 个空行。资料包与 Skill 不是一对一：一包可含多个 Skill，也可能只有工作流、课件、素材或提示词。
 
-本仓库现收录 **40 个可安装 Skill**，其中新增 22 个来自本地维护工作流，不计入飞书资料项数量。以下按飞书原编号逐项对应；可机器读取的清单见 [article-packs.json](article-packs.json)。
+本仓库现收录 **30 个可安装 Skill**。2026-10-09 按用户要求移除内容选题与创作、学习训练两类共 10 个；原飞书资料项保留，资料项数量不等于当前 Skill 数量。以下按飞书原编号逐项对应；可机器读取的清单见 [article-packs.json](article-packs.json)。
 
 “已公开”表示方法包结构和引用经过检查；有脚本的新增包另跑最小样例。外部服务真实业务效果、MCP 与飞书账号流程没有在本次更新中复测。
 
 | 编号 | 资料包 / 原文 | 类型 | 状态 | GitHub 对应与说明 |
 |---:|---|---|---|---|
 | 1 | [github仓库快速拆解_Skill](https://mp.weixin.qq.com/s/OlKtlIQwbyhgA4OKgmtuFg) | Skill类 | 已公开 | [github-repo-dissector](../skills/github-repo-dissector)；原创 Skill 方法、参考资料与所需脚本已整理。 |
-| 2 | [github高潜力发现_Skill](https://mp.weixin.qq.com/s/KdS3fYBOMFTADwRVTLLw2A) | Skill类 | 已公开 | [github-content-radar](../skills/github-content-radar)；原创 Skill 方法、参考资料与所需脚本已整理。 |
+| 2 | [github高潜力发现_Skill](https://mp.weixin.qq.com/s/KdS3fYBOMFTADwRVTLLw2A) | Skill类 | 已移出公开仓库 | 2026-10-09 按用户要求移除内容选题与创作类 Skill；原飞书资料与文章入口保留。 |
 | 3 | [电商图片反推提示词_Skill](https://mp.weixin.qq.com/s/jgsZE5JG7xryz-iPIqNckw) | Skill类 | 已公开 | [ecom-image-reverse-sop-share](../skills/ecom-image-reverse-sop-share)；原创 Skill 方法、参考资料与所需脚本已整理。 |
 | 4 | [电商主图诊断_Skill](https://mp.weixin.qq.com/s/K8uvP1AZ0Ur0g_NMONoqlg) | Skill类 | 已公开 | [ecom-main-image-diagnosis](../skills/ecom-main-image-diagnosis)；原创 Skill 方法、参考资料与所需脚本已整理。 |
 | 5 | [电商数据分析_Skill](https://mp.weixin.qq.com/s/y5j9a82NcpK7eeBZYXrAnA) | Skill类 | 已公开 | [ecommerce-competitor-analyzer](../skills/ecommerce-competitor-analyzer)、[external-skill-adapter](../skills/external-skill-adapter)；原创 Skill 方法、参考资料与所需脚本已整理。 |
@@ -20,7 +20,7 @@
 | 10 | [竞品拆解脚本工具包](https://mp.weixin.qq.com/s/LMfGoki3kx2k1ErZJU-Wxg) | 工具类 | 工具待验证 | 脚本工具资料，尚未完成可移植运行验证。 |
 | 11 | [飞书数据中台起步包](https://mp.weixin.qq.com/s/CRBmXBn1gX-fIDPqMTt2EQ) | 工具类 | 模板待整理 | 教程与数据中台起步模板，独立整理后再发布。 |
 | 12 | [公众号文章转知识库](https://mp.weixin.qq.com/s/FAWNzR59uVi5Al-GRDTOEA) | 工作流类 | 已公开 | [wechat-article-knowledge-pack](../skills/wechat-article-knowledge-pack)；原创 Skill 方法、参考资料与所需脚本已整理。 |
-| 13 | [工具教程生成_Skill](https://mp.weixin.qq.com/s/wSZVr9HcvR4R0VY-PVfJZA) | Skill类 | 已公开 | [beginner-tutorial-writer](../skills/beginner-tutorial-writer)；原创 Skill 方法、参考资料与所需脚本已整理。 |
+| 13 | [工具教程生成_Skill](https://mp.weixin.qq.com/s/wSZVr9HcvR4R0VY-PVfJZA) | Skill类 | 已移出公开仓库 | 2026-10-09 按用户要求移除内容选题与创作类 Skill；原飞书资料与文章入口保留。 |
 | 14 | [小红书skill](https://mp.weixin.qq.com/s/O2WHibY3DijuWe0Atsc8iQ) | Skill类 | 部分公开 | [ecom-market-insight-table](../skills/ecom-market-insight-table)；原创市场洞察已公开；六个改编自 ClawHub 的 Skill 未核清再发布许可，保留飞书入口。 |
 | 15 | [蒸馏skill](https://mp.weixin.qq.com/s/KaoCmKUMlffaRJCfbA8qPQ) | Skill类 | 已公开 | [full-spectrum-distiller](../skills/full-spectrum-distiller)；原创 Skill 方法、参考资料与所需脚本已整理。 |
 | 16 | [ai分析微信群消息](https://mp.weixin.qq.com/s/atFNsZOtgaOTj-skglSJ9w) | 教程类 | 方法已公开 | [chatlab-analyzer](../skills/chatlab-analyzer)；仅发布原创 ChatLab 分析方法；不包含第三方 WeFlow 安装程序。 |
